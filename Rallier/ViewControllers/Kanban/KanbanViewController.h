@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class DefinedTableManager;
+
 @interface KanbanViewController : UIViewController
+
+@property (nonatomic) DefinedTableManager *definedTableManager;
 
 @end

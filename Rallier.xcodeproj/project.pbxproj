@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0536A0AE185C09720085A16D /* KanbanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0536A0AD185C09720085A16D /* KanbanViewController.m */; };
+		0536A0B7185CB13B0085A16D /* DefinedTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0536A0B6185CB13B0085A16D /* DefinedTableManager.m */; };
+		0536A0B9185CB2460085A16D /* DefinedTableManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */; };
 		0557FBB6185C08A1005C48AC /* KanbanViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */; };
 		05B8D0F0185C05DB00008F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0EF185C05DB00008F5A /* Foundation.framework */; };
 		05B8D0F2185C05DB00008F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0F1185C05DB00008F5A /* CoreGraphics.framework */; };
@@ -20,8 +22,10 @@
 		05B8D10A185C05DB00008F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0EF185C05DB00008F5A /* Foundation.framework */; };
 		05B8D10B185C05DB00008F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0F3185C05DB00008F5A /* UIKit.framework */; };
 		05B8D113185C05DB00008F5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05B8D111185C05DB00008F5A /* InfoPlist.strings */; };
+		304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */; };
 		304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */; };
 		304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA94948306D6C587C2DCF /* TaskItemSpec.m */; };
+		304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */; };
 		A4CB093542D545DCB03C09CA /* libPods-RallierTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,8 @@
 /* Begin PBXFileReference section */
 		0536A0AC185C09720085A16D /* KanbanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KanbanViewController.h; path = ViewControllers/Kanban/KanbanViewController.h; sourceTree = "<group>"; };
 		0536A0AD185C09720085A16D /* KanbanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KanbanViewController.m; path = ViewControllers/Kanban/KanbanViewController.m; sourceTree = "<group>"; };
+		0536A0B5185CB13B0085A16D /* DefinedTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefinedTableManager.h; path = Tables/DefinedTableManager.h; sourceTree = "<group>"; };
+		0536A0B6185CB13B0085A16D /* DefinedTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefinedTableManager.m; path = Tables/DefinedTableManager.m; sourceTree = "<group>"; };
 		0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanViewControllerSpec.m; sourceTree = "<group>"; };
 		05B8D0EC185C05DB00008F5A /* Rallier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rallier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B8D0EF185C05DB00008F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,8 +62,12 @@
 		05B8D112185C05DB00008F5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		098A8C046697414A81846C7F /* Pods-RallierTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RallierTests.xcconfig"; path = "Pods/Pods-RallierTests.xcconfig"; sourceTree = "<group>"; };
 		304AA3D68BDD9E0102E62407 /* TaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskItem.h; sourceTree = "<group>"; };
+		304AA6A6017F62E4189BA717 /* DefinedTaskItemSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefinedTaskItemSource.h; path = Tables/DefinedTaskItemSource.h; sourceTree = "<group>"; };
 		304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItem.m; sourceTree = "<group>"; };
+		304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefinedTaskItemSource.m; path = Tables/DefinedTaskItemSource.m; sourceTree = "<group>"; };
 		304AA94948306D6C587C2DCF /* TaskItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItemSpec.m; sourceTree = "<group>"; };
+		304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinedTableManagerSpec.m; sourceTree = "<group>"; };
+		304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinedTaskItemSourceSpec.m; sourceTree = "<group>"; };
 		934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RallierTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +113,17 @@
 			name = Kanban;
 			sourceTree = "<group>";
 		};
+		0536A0B8185CB1420085A16D /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				0536A0B5185CB13B0085A16D /* DefinedTableManager.h */,
+				0536A0B6185CB13B0085A16D /* DefinedTableManager.m */,
+				304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */,
+				304AA6A6017F62E4189BA717 /* DefinedTaskItemSource.h */,
+			);
+			name = Tables;
+			sourceTree = "<group>";
+		};
 		05B8D0E3185C05DB00008F5A = {
 			isa = PBXGroup;
 			children = (
@@ -138,12 +159,13 @@
 		05B8D0F5185C05DB00008F5A /* Rallier */ = {
 			isa = PBXGroup;
 			children = (
-				0536A0AF185C097E0085A16D /* ViewControllers */,
 				05B8D0FE185C05DB00008F5A /* AppDelegate.h */,
 				05B8D0FF185C05DB00008F5A /* AppDelegate.m */,
 				05B8D101185C05DB00008F5A /* Images.xcassets */,
-				05B8D0F6185C05DB00008F5A /* Supporting Files */,
 				304AA282058C22628C7FEC24 /* Models */,
+				05B8D0F6185C05DB00008F5A /* Supporting Files */,
+				0536A0B8185CB1420085A16D /* Tables */,
+				0536A0AF185C097E0085A16D /* ViewControllers */,
 			);
 			path = Rallier;
 			sourceTree = "<group>";
@@ -165,6 +187,8 @@
 				05B8D10F185C05DB00008F5A /* Supporting Files */,
 				0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */,
 				304AA94948306D6C587C2DCF /* TaskItemSpec.m */,
+				304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */,
+				304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */,
 			);
 			path = RallierTests;
 			sourceTree = "<group>";
@@ -317,10 +341,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0536A0B7185CB13B0085A16D /* DefinedTableManager.m in Sources */,
 				05B8D100185C05DB00008F5A /* AppDelegate.m in Sources */,
 				0536A0AE185C09720085A16D /* KanbanViewController.m in Sources */,
 				05B8D0FC185C05DB00008F5A /* main.m in Sources */,
 				304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */,
+				304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0557FBB6185C08A1005C48AC /* KanbanViewControllerSpec.m in Sources */,
+				0536A0B9185CB2460085A16D /* DefinedTableManagerSpec.m in Sources */,
 				304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */,
+				304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "KanbanViewController.h"
+#import "DefinedTableManager.h"
 
 @interface KanbanViewController ()
 
@@ -29,10 +30,38 @@
 	[self setView:mainView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[[self view] addSubview:[[self definedTableManager] view]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+	[self createDefinedTableManager];
+}
+
+- (void)createDefinedTableManager
+{
+	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStyleGrouped];
+	DefinedTableManager *definedManager = [[DefinedTableManager alloc] initWithTableView:tableView];
+	[self setDefinedTableManager:definedManager];
+}
+
+- (CGRect)getDefinedFrame
+{
+	CGSize size = [self getTableSize];
+	return CGRectMake(0, 0, size.width, size.height);
+}
+
+- (CGSize)getTableSize
+{
+	UIView *mainView = [self view];
+	CGFloat width = [mainView bounds].size.width / 2.0;
+	CGFloat height = [mainView bounds].size.height;
+	return CGSizeMake(width, height);
 }
 
 - (void)didReceiveMemoryWarning
