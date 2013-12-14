@@ -4,11 +4,11 @@
 //
 
 #import "DefinedTaskItemSource.h"
+#import "TaskItem.h"
 
 
 @implementation DefinedTaskItemSource
-{
-}
+
 
 - (id)init
 {
@@ -19,14 +19,19 @@
 	return self;
 }
 
-- (UITableViewCell *)tableView :(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return nil;
+	NSString *cellIdentifier = @"Cell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
+	TaskItem *currentItem = [self.items objectAtIndex:[indexPath row]];
+	[[cell textLabel] setText:[currentItem taskName]];
+	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 0;
+	return [self.items count];
 }
 
 @end

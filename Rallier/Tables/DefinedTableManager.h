@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DefinedTaskItemSource.h"
 
 @interface DefinedTableManager : NSObject <UITableViewDelegate>
 
 @property (nonatomic) UITableView *view;
+@property (nonatomic) id <TaskItemSourceProtocol> dataSource;
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <UITableViewDataSource>)dataSource;
+- (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource;
+
 @end

@@ -29,6 +29,11 @@ describe(@"KanbanViewController", ^{
 			[[stu definedTableManager] shouldNotBeNil];
 		});
 
+		it(@"will create the inProgressTableManager", ^{
+			[stu view];
+			[[stu inProgressTableManager] shouldNotBeNil];
+		});
+
 	});
 });
 

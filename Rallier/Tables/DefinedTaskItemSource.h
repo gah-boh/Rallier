@@ -5,6 +5,10 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol TaskItemSourceProtocol <UITableViewDataSource>
 
-@interface DefinedTaskItemSource : NSObject <UITableViewDataSource>
+@end
+
+@interface DefinedTaskItemSource : NSObject <TaskItemSourceProtocol>
+@property(nonatomic, strong) NSMutableArray *items;
 @end

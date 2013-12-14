@@ -13,5 +13,6 @@
 @interface KanbanViewController : UIViewController
 
 @property (nonatomic) DefinedTableManager *definedTableManager;
+@property (nonatomic) DefinedTableManager *inProgressTableManager;
 
 @end

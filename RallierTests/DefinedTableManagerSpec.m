@@ -17,8 +17,8 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 			__block KWCaptureSpy *sourceSpy;
 
 			beforeEach(^{
-				mockTableView = [UITableView mock];
-				mockDataSource = [KWMock mockForProtocol:@protocol(UITableViewDataSource)];
+				mockTableView = [UITableView nullMock];
+				mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
 				delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
 				sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
 				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];

@@ -11,15 +11,22 @@
 @implementation DefinedTableManager
 
 - (id)initWithTableView:(UITableView *)tableView
-				 source:(id <UITableViewDataSource>)dataSource
+				 source:(id <TaskItemSourceProtocol>)dataSource
 {
 	self = [super init];
 	if (self) {
 		_view = tableView;
+		_dataSource = dataSource;
+		[self setUpCells];
 		[_view setDelegate:self];
 		[_view setDataSource:dataSource];
 	}
 	return self;
+}
+
+- (void)setUpCells
+{
+	[[self view] registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
 - (void)dealloc
