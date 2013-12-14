@@ -6,5 +6,5 @@
 #import <Foundation/Foundation.h>
 
 
-@interface DefinedTaskItemSource : NSObject
+@interface DefinedTaskItemSource : NSObject <UITableViewDataSource>
 @end

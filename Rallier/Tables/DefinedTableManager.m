@@ -11,11 +11,13 @@
 @implementation DefinedTableManager
 
 - (id)initWithTableView:(UITableView *)tableView
+				 source:(id <UITableViewDataSource>)dataSource
 {
 	self = [super init];
 	if (self) {
 		_view = tableView;
 		[_view setDelegate:self];
+		[_view setDataSource:dataSource];
 	}
 	return self;
 }

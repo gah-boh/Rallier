@@ -12,12 +12,16 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 
 		context(@"constructions", ^{
 			__block id mockTableView;
+			__block id mockDataSource;
 			__block KWCaptureSpy *delegateSpy;
+			__block KWCaptureSpy *sourceSpy;
 
 			beforeEach(^{
 				mockTableView = [UITableView mock];
+				mockDataSource = [KWMock mockForProtocol:@protocol(UITableViewDataSource)];
 				delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
-				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView];
+				sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
+				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 			});
 
 			it(@"should conform to the table view delegate protocol", ^{
@@ -30,6 +34,10 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 
 			it(@"sets itself as its table view's delegate", ^{
 				[[delegateSpy.argument should] equal:sut];
+			});
+
+			it(@"sets the passed source as the views data source", ^{
+				[[sourceSpy.argument should] equal:mockDataSource];
 			});
 
 		});

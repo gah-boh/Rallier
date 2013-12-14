@@ -12,5 +12,5 @@
 
 @property (nonatomic) UITableView *view;
 
-- (id)initWithTableView:(UITableView *)tableView;
+- (id)initWithTableView:(UITableView *)tableView source:(id <UITableViewDataSource>)dataSource;
 @end

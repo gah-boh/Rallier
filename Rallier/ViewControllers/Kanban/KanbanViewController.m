@@ -46,7 +46,7 @@
 - (void)createDefinedTableManager
 {
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStyleGrouped];
-	DefinedTableManager *definedManager = [[DefinedTableManager alloc] initWithTableView:tableView];
+	DefinedTableManager *definedManager = [[DefinedTableManager alloc] initWithTableView:tableView source:nil ];
 	[self setDefinedTableManager:definedManager];
 }
 
