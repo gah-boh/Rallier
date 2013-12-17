@@ -13,6 +13,8 @@
 
 @interface KanbanViewController ()
 
+@property(nonatomic, strong) DefinedTableManager *sourceDragManager;
+@property(nonatomic, strong) UITableViewCell *draggingCell;
 @end
 
 @implementation KanbanViewController
@@ -22,6 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		_tableManagers = [NSMutableArray array];
     }
     return self;
 }
@@ -30,6 +33,14 @@
 {
 	UIView *mainView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[self setView:mainView];
+}
+
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+
+	[self createDefinedTableManager];
+	[self createInProgressTableManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -41,14 +52,65 @@
 
 	[[[self definedTableManager] view] reloadData];
 	[[[self inProgressTableManager] view] reloadData];
+
+	[self registerGestureRecognizers];
 }
 
-- (void)viewDidLoad
+- (void)registerGestureRecognizers
 {
-    [super viewDidLoad];
+	UIPanGestureRecognizer *panGestureRecognizer =
+			[[UIPanGestureRecognizer alloc] initWithTarget:self
+													action:@selector(cellDrag:)];
+	[[self view] addGestureRecognizer:panGestureRecognizer];
+}
 
-	[self createDefinedTableManager];
-	[self createInProgressTableManager];
+- (void)cellDrag:(UIPanGestureRecognizer *)gr
+{
+	if ([gr state] == UIGestureRecognizerStateBegan) {
+		CGPoint touch = [gr locationInView:[self view]];
+		[self draggedCellTableManager:touch];
+	}
+	else if ([gr state] == UIGestureRecognizerStateChanged) {
+		[self dragCell:gr];
+	}
+}
+
+- (void)draggedCellTableManager:(CGPoint)touch
+{
+	for (DefinedTableManager *tableManager in [self tableManagers]) {
+		BOOL isInView = [[tableManager view] pointInside:touch
+											   withEvent:nil];
+		if (isInView) {
+			[self setupForDragStart:tableManager point:touch];
+			break;
+		}
+	}
+}
+
+- (void)setupForDragStart:(DefinedTableManager *)manager point:(CGPoint)point
+{
+	[self setSourceDragManager:manager];
+	[self setupDraggingCell:[manager getCellForPoint:point]];
+}
+
+- (void)setupDraggingCell:(UITableViewCell *)cell
+{
+	[cell removeFromSuperview];
+	[[self view] addSubview:cell];
+	[self setDraggingCell:cell];
+}
+
+- (void)dragCell:(UIPanGestureRecognizer *)gr
+{
+	CGPoint cellCenter = [self translatedCellPoint:[gr translationInView:[self view]]];
+	[[self draggingCell] setCenter:cellCenter];
+	[gr setTranslation:CGPointZero inView:[self view]];
+}
+
+- (CGPoint)translatedCellPoint:(CGPoint)translation
+{
+	return CGPointMake([[self draggingCell] center].x + translation.x,
+			[[self draggingCell] center].y + translation.y);
 }
 
 - (void)createDefinedTableManager
@@ -57,6 +119,7 @@
 	DefinedTaskItemSource *source = [[DefinedTaskItemSource alloc] init];
 	DefinedTableManager *definedManager = [[DefinedTableManager alloc] initWithTableView:tableView source:source];
 	[self setDefinedTableManager:definedManager];
+	[[self tableManagers] addObject:definedManager];
 
 	NSMutableArray *items = [NSMutableArray array];
 	[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up"]];
@@ -71,6 +134,7 @@
 	DefinedTaskItemSource *source = [[DefinedTaskItemSource alloc] init];
 	DefinedTableManager *inProgress = [[DefinedTableManager alloc] initWithTableView:tableView source:source];
 	[self setInProgressTableManager:inProgress];
+	[[self tableManagers] addObject:inProgress];
 }
 
 - (CGRect)getInProgressFrame

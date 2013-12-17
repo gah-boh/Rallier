@@ -20,54 +20,23 @@
 	if (self) {
 		_view = tableView;
 		_dataSource = dataSource;
-		[self setUpCells];
+		[self setUpCellReuseIdentifiers];
 		[_view setDelegate:self];
 		[_view setDataSource:dataSource];
-		[self registerGestureRecognizers];
 	}
 	return self;
 }
 
-- (void)setUpCells
+- (void)setUpCellReuseIdentifiers
 {
 	[_view registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
-- (void)registerGestureRecognizers
-{
-	UIPanGestureRecognizer *panGestureRecognizer =
-			[[UIPanGestureRecognizer alloc] initWithTarget:self
-													action:@selector(checkForCell:)];
-	[_view addGestureRecognizer:panGestureRecognizer];
-}
 
-- (void)checkForCell:(UIPanGestureRecognizer *)gr
+- (UITableViewCell *)getCellForPoint:(CGPoint)point
 {
-	if ([gr state] == UIGestureRecognizerStateBegan) {
-		[self getCellForGesture:gr];
-	}
-	else if ([gr state] == UIGestureRecognizerStateChanged) {
-		[self dragCell:gr];
-	}
-}
-
-- (void)getCellForGesture:(UIPanGestureRecognizer *)gr
-{
-	NSIndexPath *indexPath = [[self view] indexPathForRowAtPoint:[gr locationInView:[self view]]];
-	draggedCell = [[self view] cellForRowAtIndexPath:indexPath];
-}
-
-- (void)dragCell:(UIPanGestureRecognizer *)gr
-{
-	CGPoint cellCenter = [self translatedCellPoint:[gr translationInView:[self view]]];
-	[draggedCell setCenter:cellCenter];
-	[gr setTranslation:CGPointZero inView:[self view]];
-}
-
-- (CGPoint)translatedCellPoint:(CGPoint)translation
-{
-	return CGPointMake([draggedCell center].x + translation.x,
-					   [draggedCell center].y + translation.y);
+	NSIndexPath *indexPath = [[self view] indexPathForRowAtPoint:point];
+	return [[self view] cellForRowAtIndexPath:indexPath];
 }
 
 - (void)dealloc

@@ -16,4 +16,5 @@
 
 - (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource;
 
+- (UITableViewCell *)getCellForPoint:(CGPoint)point;
 @end

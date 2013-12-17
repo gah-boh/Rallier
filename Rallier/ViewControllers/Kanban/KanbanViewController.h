@@ -14,5 +14,6 @@
 
 @property (nonatomic) DefinedTableManager *definedTableManager;
 @property (nonatomic) DefinedTableManager *inProgressTableManager;
+@property (nonatomic) NSMutableArray *tableManagers;
 
 @end
