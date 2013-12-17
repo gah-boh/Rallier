@@ -24,8 +24,10 @@
 		05B8D113185C05DB00008F5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05B8D111185C05DB00008F5A /* InfoPlist.strings */; };
 		304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */; };
 		304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */; };
+		304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */; };
 		304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA94948306D6C587C2DCF /* TaskItemSpec.m */; };
 		304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */; };
+		304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAD5F6880A6879DED478B /* CellTransferHelper.m */; };
 		A4CB093542D545DCB03C09CA /* libPods-RallierTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +68,10 @@
 		304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItem.m; sourceTree = "<group>"; };
 		304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefinedTaskItemSource.m; path = Tables/DefinedTaskItemSource.m; sourceTree = "<group>"; };
 		304AA94948306D6C587C2DCF /* TaskItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItemSpec.m; sourceTree = "<group>"; };
+		304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellTransferHelperSpec.m; sourceTree = "<group>"; };
+		304AAD5F6880A6879DED478B /* CellTransferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellTransferHelper.m; path = Tables/CellTransferHelper.m; sourceTree = "<group>"; };
 		304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinedTableManagerSpec.m; sourceTree = "<group>"; };
+		304AAF2B25E43A601C08A100 /* CellTransferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellTransferHelper.h; path = Tables/CellTransferHelper.h; sourceTree = "<group>"; };
 		304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinedTaskItemSourceSpec.m; sourceTree = "<group>"; };
 		934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RallierTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +125,8 @@
 				0536A0B6185CB13B0085A16D /* DefinedTableManager.m */,
 				304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */,
 				304AA6A6017F62E4189BA717 /* DefinedTaskItemSource.h */,
+				304AAF2B25E43A601C08A100 /* CellTransferHelper.h */,
+				304AAD5F6880A6879DED478B /* CellTransferHelper.m */,
 			);
 			name = Tables;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				304AA94948306D6C587C2DCF /* TaskItemSpec.m */,
 				304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */,
 				304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */,
+				304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */,
 			);
 			path = RallierTests;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 				05B8D0FC185C05DB00008F5A /* main.m in Sources */,
 				304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */,
 				304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */,
+				304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +367,7 @@
 				0536A0B9185CB2460085A16D /* DefinedTableManagerSpec.m in Sources */,
 				304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */,
 				304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */,
+				304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

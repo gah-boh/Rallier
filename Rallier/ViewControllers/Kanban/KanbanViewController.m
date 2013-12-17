@@ -14,6 +14,7 @@
 @interface KanbanViewController ()
 
 @property(nonatomic, strong) DefinedTableManager *sourceDragManager;
+@property(nonatomic, strong) DefinedTableManager *destinationDragManager;
 @property(nonatomic, strong) UITableViewCell *draggingCell;
 @end
 
@@ -66,25 +67,34 @@
 
 - (void)cellDrag:(UIPanGestureRecognizer *)gr
 {
+	CGPoint touch = [gr locationInView:[self view]];
 	if ([gr state] == UIGestureRecognizerStateBegan) {
-		CGPoint touch = [gr locationInView:[self view]];
 		[self draggedCellTableManager:touch];
 	}
 	else if ([gr state] == UIGestureRecognizerStateChanged) {
 		[self dragCell:gr];
 	}
+	else if ([gr state] == UIGestureRecognizerStateEnded) {
+		[self endDragging:touch];
+	}
 }
 
 - (void)draggedCellTableManager:(CGPoint)touch
+{
+	DefinedTableManager *tableManager = [self findTouchedTableManager:touch];
+	[self setupForDragStart:tableManager point:touch];
+}
+
+- (DefinedTableManager *)findTouchedTableManager:(CGPoint)touch
 {
 	for (DefinedTableManager *tableManager in [self tableManagers]) {
 		BOOL isInView = [[tableManager view] pointInside:touch
 											   withEvent:nil];
 		if (isInView) {
-			[self setupForDragStart:tableManager point:touch];
-			break;
+			return tableManager;
 		}
 	}
+	return nil;
 }
 
 - (void)setupForDragStart:(DefinedTableManager *)manager point:(CGPoint)point
@@ -111,6 +121,14 @@
 {
 	return CGPointMake([[self draggingCell] center].x + translation.x,
 			[[self draggingCell] center].y + translation.y);
+}
+
+- (void)endDragging:(CGPoint)point
+{
+	NSLog(@"Finish me endDragging:");
+	[self setDestinationDragManager:[self findTouchedTableManager:point]];
+	[[self draggingCell] removeFromSuperview];
+	[self setDraggingCell:nil];
 }
 
 - (void)createDefinedTableManager
