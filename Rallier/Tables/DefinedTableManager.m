@@ -7,6 +7,8 @@
 //
 
 #import "DefinedTableManager.h"
+#import "CellTransferHelper.h"
+#import "TaskItem.h"
 
 @implementation DefinedTableManager
 {
@@ -33,10 +35,20 @@
 }
 
 
-- (UITableViewCell *)getCellForPoint:(CGPoint)point
+- (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point
 {
 	NSIndexPath *indexPath = [[self view] indexPathForRowAtPoint:point];
-	return [[self view] cellForRowAtIndexPath:indexPath];
+	return [self getDataForSelectedCell:indexPath];
+}
+
+- (CellTransferHelper *)getDataForSelectedCell:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell = [[self view] cellForRowAtIndexPath:indexPath];
+	TaskItem *taskItem = [[self dataSource] itemForPosition:[indexPath row]];
+	CellTransferHelper *cellInfo = [[CellTransferHelper alloc] initWithTaskItem:taskItem
+																		   cell:cell
+																	   position:[indexPath row]];
+	return cellInfo;
 }
 
 - (void)dealloc

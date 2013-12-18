@@ -10,9 +10,9 @@ SPEC_BEGIN(CellTransferHelperSpec)
 
 			beforeEach(^{
 				id taskMock = [TaskItem mock];
-				int arrayPosition = 1;
+				NSIndexPath * indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
 				id cellMock = [UITableViewCell mock];
-				sut = [[CellTransferHelper alloc] initWithTaskItem:taskMock cell:cellMock arrayPosition:arrayPosition];
+				sut = [[CellTransferHelper alloc] initWithTaskItem:taskMock cell:cellMock position:indexPath];
 			});
 
 			it(@"should not allow you to use init", ^{
@@ -26,7 +26,8 @@ SPEC_BEGIN(CellTransferHelperSpec)
 			});
 
 			it(@"should have an array position", ^{
-				[[theValue([sut arrayPosition]) should] equal:theValue(1)];
+				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+				[[[sut indexPath] should] equal:indexPath];
 			});
 
 			it(@"should have a cell property defined", ^{

@@ -1,24 +1,29 @@
 #import "Kiwi.h"
 #import "DefinedTableManager.h"
+#import "CellTransferHelper.h"
+#import "TaskItem.h"
 
 SPEC_BEGIN(DefinedTableManagerSpec)
 
 	describe(@"DefinedTableManager", ^{
 		__block DefinedTableManager *sut;
+		__block id mockTableView;
+		__block id mockDataSource;
+
+		beforeEach(^{
+			mockTableView = [UITableView nullMock];
+			mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
+		});
 
 		afterEach(^{
 			sut = nil;
 		});
 
 		context(@"constructions", ^{
-			__block id mockTableView;
-			__block id mockDataSource;
 			__block KWCaptureSpy *delegateSpy;
 			__block KWCaptureSpy *sourceSpy;
 
 			beforeEach(^{
-				mockTableView = [UITableView nullMock];
-				mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
 				delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
 				sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
 				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
@@ -40,6 +45,19 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 				[[sourceSpy.argument should] equal:mockDataSource];
 			});
 
+		});
+
+		context(@"Getting data for dragging", ^{
+			beforeEach(^{
+				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+			});
+
+			it(@"should return a CellTransferHelper when given a point", ^{
+				id mockTaskItem = [TaskItem nullMock];
+				[[mockDataSource should] receive:@selector(itemForPosition:) andReturn:mockTaskItem];
+				CellTransferHelper *expected = [sut getCellTransferInfoForPoint:CGPointMake(10, 10)];
+				[[expected should] beKindOfClass:[CellTransferHelper class]];
+			});
 		});
 	});
 

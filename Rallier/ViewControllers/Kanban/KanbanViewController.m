@@ -10,12 +10,14 @@
 #import "DefinedTableManager.h"
 #import "DefinedTaskItemSource.h"
 #import "TaskItem.h"
+#import "CellTransferHelper.h"
 
 @interface KanbanViewController ()
 
 @property(nonatomic, strong) DefinedTableManager *sourceDragManager;
 @property(nonatomic, strong) DefinedTableManager *destinationDragManager;
 @property(nonatomic, strong) UITableViewCell *draggingCell;
+@property(nonatomic, strong) CellTransferHelper *draggingInfo;
 @end
 
 @implementation KanbanViewController
@@ -67,28 +69,29 @@
 
 - (void)cellDrag:(UIPanGestureRecognizer *)gr
 {
-	CGPoint touch = [gr locationInView:[self view]];
 	if ([gr state] == UIGestureRecognizerStateBegan) {
-		[self draggedCellTableManager:touch];
+		[self draggedCellTableManager:gr];
 	}
 	else if ([gr state] == UIGestureRecognizerStateChanged) {
 		[self dragCell:gr];
 	}
 	else if ([gr state] == UIGestureRecognizerStateEnded) {
-		[self endDragging:touch];
+		[self endDragging:gr];
 	}
 }
 
-- (void)draggedCellTableManager:(CGPoint)touch
+- (void)draggedCellTableManager:(UIPanGestureRecognizer *)gr
 {
-	DefinedTableManager *tableManager = [self findTouchedTableManager:touch];
-	[self setupForDragStart:tableManager point:touch];
+	DefinedTableManager *tableManager = [self findTouchedTableManager:gr];
+	[self setupForDragStart:tableManager point:[gr locationInView:[tableManager view]]];
 }
 
-- (DefinedTableManager *)findTouchedTableManager:(CGPoint)touch
+- (DefinedTableManager *)findTouchedTableManager:(UIPanGestureRecognizer *)gr
 {
 	for (DefinedTableManager *tableManager in [self tableManagers]) {
-		BOOL isInView = [[tableManager view] pointInside:touch
+		UITableView *tableView = [tableManager view];
+		CGPoint localizedPoint = [gr locationInView:tableView];
+		BOOL isInView = [[tableManager view] pointInside:localizedPoint
 											   withEvent:nil];
 		if (isInView) {
 			return tableManager;
@@ -100,11 +103,13 @@
 - (void)setupForDragStart:(DefinedTableManager *)manager point:(CGPoint)point
 {
 	[self setSourceDragManager:manager];
-	[self setupDraggingCell:[manager getCellForPoint:point]];
+	[self setDraggingInfo:[manager getCellTransferInfoForPoint:point]];
+	[self setupDraggingCell];
 }
 
-- (void)setupDraggingCell:(UITableViewCell *)cell
+- (void)setupDraggingCell
 {
+	UITableViewCell *cell = [[self draggingInfo] cell];
 	[cell removeFromSuperview];
 	[[self view] addSubview:cell];
 	[self setDraggingCell:cell];
@@ -123,17 +128,23 @@
 			[[self draggingCell] center].y + translation.y);
 }
 
-- (void)endDragging:(CGPoint)point
+- (void)endDragging:(UIPanGestureRecognizer *)gr
 {
-	NSLog(@"Finish me endDragging:");
-	[self setDestinationDragManager:[self findTouchedTableManager:point]];
+	[self setDestinationDragManager:[self findTouchedTableManager:gr]];
+	TaskItem *taskItem = [[self draggingInfo] taskItem];
+	[[[self destinationDragManager] dataSource] addData:taskItem
+											forPosition:[[self draggingInfo] position]];
+	[[[self sourceDragManager] dataSource] removeDataForPosition:[[self draggingInfo] position]];
 	[[self draggingCell] removeFromSuperview];
 	[self setDraggingCell:nil];
+
+	[[[self definedTableManager] view] reloadData];
+	[[[self inProgressTableManager] view] reloadData];
 }
 
 - (void)createDefinedTableManager
 {
-	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStyleGrouped];
+	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStylePlain];
 	DefinedTaskItemSource *source = [[DefinedTaskItemSource alloc] init];
 	DefinedTableManager *definedManager = [[DefinedTableManager alloc] initWithTableView:tableView source:source];
 	[self setDefinedTableManager:definedManager];
@@ -148,11 +159,16 @@
 
 - (void)createInProgressTableManager
 {
-	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStyleGrouped];
+	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStylePlain];
 	DefinedTaskItemSource *source = [[DefinedTaskItemSource alloc] init];
 	DefinedTableManager *inProgress = [[DefinedTableManager alloc] initWithTableView:tableView source:source];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];
+
+	NSMutableArray *items = [NSMutableArray array];
+	[items addObject:[[TaskItem alloc] initWithName:@"More refactor"]];
+	[items addObject:[[TaskItem alloc] initWithName:@"You messed up again ;)"]];
+	[source setItems:items];
 }
 
 - (CGRect)getInProgressFrame

@@ -6,11 +6,7 @@
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
 
-
 @implementation CellTransferHelper
-{
-
-}
 
 - (id)init
 {
@@ -21,12 +17,12 @@
 
 - (id)initWithTaskItem:(TaskItem *)aTaskItem
 				  cell:(UITableViewCell *)aCell
-		 arrayPosition:(int)position
+			  position:(int)aPosition
 {
 	self = [super init];
 	if (self) {
 		_taskItem = aTaskItem;
-		_arrayPosition = position;
+		_position = aPosition;
 		_cell = aCell;
 	}
 

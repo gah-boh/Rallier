@@ -14,7 +14,7 @@
 {
 	self = [super init];
 	if (self) {
-
+		_items = [NSMutableArray array];
 	}
 	return self;
 }
@@ -24,7 +24,7 @@
 	NSString *cellIdentifier = @"Cell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-	TaskItem *currentItem = [self.items objectAtIndex:[indexPath row]];
+	TaskItem *currentItem = [self itemForPosition:[indexPath row]];
 	[[cell textLabel] setText:[currentItem taskName]];
 	return cell;
 }
@@ -33,5 +33,22 @@
 {
 	return [self.items count];
 }
+
+- (TaskItem *)itemForPosition:(int)position
+{
+	return [[self items] objectAtIndex:(NSUInteger) position];
+}
+
+- (void)removeDataForPosition:(int)position
+{
+	[[self items] removeObjectAtIndex:(NSUInteger) position];
+}
+
+- (void)addData:(TaskItem *)taskItem
+	forPosition:(int)position
+{
+	[[self items] addObject:taskItem];
+}
+
 
 @end

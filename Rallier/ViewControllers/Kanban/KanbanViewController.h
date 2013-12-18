@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DefinedTableManager;
+@class CellTransferHelper;
 
 @interface KanbanViewController : UIViewController
 

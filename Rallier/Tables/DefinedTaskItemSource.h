@@ -5,8 +5,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class TaskItem;
+
 @protocol TaskItemSourceProtocol <UITableViewDataSource>
 
+- (TaskItem *)itemForPosition:(int)position;
+
+- (void)removeDataForPosition:(int)position;
+
+- (void)addData:(TaskItem *)taskItem forPosition:(int)position;
 @end
 
 @interface DefinedTaskItemSource : NSObject <TaskItemSourceProtocol>

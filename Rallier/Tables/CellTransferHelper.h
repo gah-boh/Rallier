@@ -10,9 +10,9 @@
 
 @interface CellTransferHelper : NSObject
 @property (nonatomic, strong) TaskItem *taskItem;
-@property (nonatomic, assign) int arrayPosition;
+@property (nonatomic, assign) int position;
 @property (nonatomic, strong) UITableViewCell *cell;
 
-- (id)initWithTaskItem:(TaskItem *)mock cell:(UITableViewCell *)cell arrayPosition:(int)position;
+- (id)initWithTaskItem:(TaskItem *)mock cell:(UITableViewCell *)cell position:(int)aPosition;
 
 @end

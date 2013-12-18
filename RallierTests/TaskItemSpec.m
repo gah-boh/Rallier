@@ -10,6 +10,7 @@ SPEC_BEGIN(TaskItemSpec)
 			stu = [[TaskItem alloc] initWithName:@"Testing"];
 			[[[stu taskName] should] equal:@"Testing"];
 		});
+
 	});
 
 SPEC_END

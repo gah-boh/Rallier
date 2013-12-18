@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "DefinedTaskItemSource.h"
 
+@class CellTransferHelper;
+
 @interface DefinedTableManager : NSObject <UITableViewDelegate>
 
 @property (nonatomic) UITableView *view;
@@ -16,5 +18,6 @@
 
 - (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource;
 
-- (UITableViewCell *)getCellForPoint:(CGPoint)point;
+- (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point;
+
 @end
