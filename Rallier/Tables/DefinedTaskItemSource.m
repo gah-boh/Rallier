@@ -6,6 +6,7 @@
 #import "DefinedTaskItemSource.h"
 #import "TaskItem.h"
 #import "DefinedTableManager.h"
+#import "TaskCell.h"
 
 
 @implementation DefinedTaskItemSource
@@ -22,10 +23,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:taskCellIdentifier forIndexPath:indexPath];
+	TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:taskCellIdentifier forIndexPath:indexPath];
 
 	TaskItem *currentItem = [self itemForPosition:(int)[indexPath row]];
-	[[cell textLabel] setText:[currentItem taskName]];
+	[[cell taskName] setText:[currentItem taskName]];
 	return cell;
 }
 

@@ -9,8 +9,9 @@
 #import "DefinedTableManager.h"
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
+#import "TaskCell.h"
 
-NSString * const taskCellIdentifier = @"Cell";
+NSString * const taskCellIdentifier = @"TaskCell";
 
 @implementation DefinedTableManager
 {
@@ -33,9 +34,9 @@ NSString * const taskCellIdentifier = @"Cell";
 
 - (void)setUpCellReuseIdentifiers
 {
-	[_view registerClass:[UITableViewCell class] forCellReuseIdentifier:taskCellIdentifier];
+	UINib *taskCellNib = [UINib nibWithNibName:taskCellIdentifier bundle:nil];
+	[_view registerNib:taskCellNib forCellReuseIdentifier:taskCellIdentifier];
 }
-
 
 - (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point
 {
