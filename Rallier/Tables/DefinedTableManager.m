@@ -9,13 +9,11 @@
 #import "DefinedTableManager.h"
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
-#import "TaskCell.h"
 
 NSString * const taskCellIdentifier = @"TaskCell";
 
 @implementation DefinedTableManager
 {
-	UITableViewCell *draggedCell;
 }
 
 - (id)initWithTableView:(UITableView *)tableView
