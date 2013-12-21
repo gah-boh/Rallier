@@ -26,7 +26,9 @@
 		304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */; };
 		304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */; };
 		304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA94948306D6C587C2DCF /* TaskItemSpec.m */; };
+		304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */; };
 		304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */; };
+		304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA52CFCF951CC01DCEED6 /* DragController.m */; };
 		304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAD5F6880A6879DED478B /* CellTransferHelper.m */; };
 		A4CB093542D545DCB03C09CA /* libPods-RallierTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */; };
 /* End PBXBuildFile section */
@@ -63,13 +65,16 @@
 		05B8D110185C05DB00008F5A /* RallierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RallierTests-Info.plist"; sourceTree = "<group>"; };
 		05B8D112185C05DB00008F5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		098A8C046697414A81846C7F /* Pods-RallierTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RallierTests.xcconfig"; path = "Pods/Pods-RallierTests.xcconfig"; sourceTree = "<group>"; };
+		304AA2A13305A29D905FE29D /* DragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DragController.h; path = Controllers/DragController.h; sourceTree = "<group>"; };
 		304AA3D68BDD9E0102E62407 /* TaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskItem.h; sourceTree = "<group>"; };
+		304AA52CFCF951CC01DCEED6 /* DragController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DragController.m; path = Controllers/DragController.m; sourceTree = "<group>"; };
 		304AA6A6017F62E4189BA717 /* DefinedTaskItemSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefinedTaskItemSource.h; path = Tables/DefinedTaskItemSource.h; sourceTree = "<group>"; };
 		304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItem.m; sourceTree = "<group>"; };
 		304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefinedTaskItemSource.m; path = Tables/DefinedTaskItemSource.m; sourceTree = "<group>"; };
 		304AA94948306D6C587C2DCF /* TaskItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItemSpec.m; sourceTree = "<group>"; };
 		304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellTransferHelperSpec.m; sourceTree = "<group>"; };
 		304AAD5F6880A6879DED478B /* CellTransferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellTransferHelper.m; path = Tables/CellTransferHelper.m; sourceTree = "<group>"; };
+		304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragControllerSpec.m; sourceTree = "<group>"; };
 		304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinedTableManagerSpec.m; sourceTree = "<group>"; };
 		304AAF2B25E43A601C08A100 /* CellTransferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellTransferHelper.h; path = Tables/CellTransferHelper.h; sourceTree = "<group>"; };
 		304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinedTaskItemSourceSpec.m; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 				05B8D0F6185C05DB00008F5A /* Supporting Files */,
 				0536A0B8185CB1420085A16D /* Tables */,
 				0536A0AF185C097E0085A16D /* ViewControllers */,
+				304AAB9CBD1BE75D73E66860 /* Controllers */,
 			);
 			path = Rallier;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 				304AAEDBAB2F6E5F5A10064A /* DefinedTableManagerSpec.m */,
 				304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */,
 				304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */,
+				304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */,
 			);
 			path = RallierTests;
 			sourceTree = "<group>";
@@ -217,6 +224,15 @@
 				304AA3D68BDD9E0102E62407 /* TaskItem.h */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		304AAB9CBD1BE75D73E66860 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				304AA2A13305A29D905FE29D /* DragController.h */,
+				304AA52CFCF951CC01DCEED6 /* DragController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +372,7 @@
 				304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */,
 				304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */,
 				304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */,
+				304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +385,7 @@
 				304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */,
 				304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */,
 				304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */,
+				304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,18 +11,16 @@
 #import "DefinedTaskItemSource.h"
 #import "TaskItem.h"
 #import "CellTransferHelper.h"
+#import "DragController.h"
 
 @interface KanbanViewController ()
-
-@property(nonatomic, strong) DefinedTableManager *sourceDragManager;
-@property(nonatomic, strong) DefinedTableManager *destinationDragManager;
-@property(nonatomic, strong) UITableViewCell *draggingCell;
-@property(nonatomic, strong) CellTransferHelper *draggingInfo;
-@property (nonatomic, assign) CGRect draggingOffset;
 
 @end
 
 @implementation KanbanViewController
+{
+	DragController *dragController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,7 +70,7 @@
 - (void)cellDrag:(UIPanGestureRecognizer *)gr
 {
 	if ([gr state] == UIGestureRecognizerStateBegan) {
-		[self draggedCellTableManager:gr];
+		[self createDragController:gr];
 	}
 	else if ([gr state] == UIGestureRecognizerStateChanged) {
 		[self dragCell:gr];
@@ -82,10 +80,13 @@
 	}
 }
 
-- (void)draggedCellTableManager:(UIPanGestureRecognizer *)gr
+- (void)createDragController:(UIPanGestureRecognizer *)gr
 {
 	DefinedTableManager *tableManager = [self findTouchedTableManager:gr];
-	[self setupForDragStart:tableManager point:[gr locationInView:[tableManager view]]];
+	CellTransferHelper *transferHelper = [tableManager getCellTransferInfoForPoint:[gr locationInView:[tableManager view]]];
+	dragController = [[DragController alloc] initWithSource:tableManager
+													 helper:transferHelper
+											   draggingView:[self view]];
 }
 
 - (DefinedTableManager *)findTouchedTableManager:(UIPanGestureRecognizer *)gr
@@ -102,54 +103,16 @@
 	return nil;
 }
 
-- (void)setupForDragStart:(DefinedTableManager *)manager point:(CGPoint)point
-{
-	[self setSourceDragManager:manager];
-	[self setDraggingInfo:[manager getCellTransferInfoForPoint:point]];
-	[self setupDraggingCell];
-}
-
-- (void)setupDraggingCell
-{
-	UITableViewCell *cell = [[self draggingInfo] cell];
-	[cell removeFromSuperview];
-	[[self view] addSubview:cell];
-	[self adjustDraggedCellFrame:cell];
-	[self setDraggingCell:cell];
-}
-
-- (void)adjustDraggedCellFrame:(UITableViewCell *)cell
-{
-	CGRect parentViewFrame = [[[self sourceDragManager] view] frame];
-	CGPoint newCellOrigin = [cell frame].origin;
-	newCellOrigin.x += parentViewFrame.origin.x;
-	newCellOrigin.y += parentViewFrame.origin.y;
-	[cell setFrame:CGRectMake(newCellOrigin.x, newCellOrigin.y, [cell frame].size.width, [cell frame].size.height)];
-}
-
 - (void)dragCell:(UIPanGestureRecognizer *)gr
 {
-	CGPoint cellCenter = [self translatedCellPoint:[gr translationInView:[self view]]];
-	[[self draggingCell] setCenter:cellCenter];
+	[dragController dragCell:[gr translationInView:[self view]]];
 	[gr setTranslation:CGPointZero inView:[self view]];
 }
 
-- (CGPoint)translatedCellPoint:(CGPoint)translation
-{
-	return CGPointMake([[self draggingCell] center].x + translation.x,
-			[[self draggingCell] center].y + translation.y);
-}
 
 - (void)endDragging:(UIPanGestureRecognizer *)gr
 {
-	[self setDestinationDragManager:[self findTouchedTableManager:gr]];
-	TaskItem *taskItem = [[self draggingInfo] taskItem];
-	[[[self destinationDragManager] dataSource] addData:taskItem
-											forPosition:[[self draggingInfo] position]];
-	[[[self sourceDragManager] dataSource] removeDataForPosition:[[self draggingInfo] position]];
-	[[self draggingCell] removeFromSuperview];
-	[self setDraggingCell:nil];
-
+	[dragController dragEndedAt:[self findTouchedTableManager:gr]];
 	[[[self definedTableManager] view] reloadData];
 	[[[self inProgressTableManager] view] reloadData];
 }
