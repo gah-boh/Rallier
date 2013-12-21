@@ -15,13 +15,12 @@
 								 userInfo:nil];
 }
 
-- (id)initWithTaskItem:(TaskItem *)aTaskItem cell:(UITableViewCell *)aCell position:(int)aPosition
+- (id)initWithTaskItem:(TaskItem *)aTaskItem position:(NSIndexPath *)indexPath
 {
 	self = [super init];
 	if (self) {
 		_taskItem = aTaskItem;
-		_position = aPosition;
-		_cell = aCell;
+		_position = indexPath;
 	}
 
 	return self;

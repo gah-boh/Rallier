@@ -43,10 +43,14 @@
 
 - (CellTransferHelper *)getDataForSelectedCell:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [[self view] cellForRowAtIndexPath:indexPath];
 	TaskItem *taskItem = [[self dataSource] itemForPosition:(int)[indexPath row]];
-	CellTransferHelper *cellInfo = [[CellTransferHelper alloc] initWithTaskItem:taskItem cell:cell position:(int) [indexPath row]];
+	CellTransferHelper *cellInfo = [[CellTransferHelper alloc] initWithTaskItem:taskItem position:indexPath];
 	return cellInfo;
+}
+
+- (UITableViewCell *)cellForIndexPath:(NSIndexPath *)indexPath
+{
+	return [[self dataSource] tableView:[self view] cellForRowAtIndexPath:indexPath];
 }
 
 - (void)dealloc
@@ -54,4 +58,13 @@
 	[_view setDelegate:nil];
 }
 
+- (void)removeCellAndDataFromPosition:(NSIndexPath *)path
+{
+	[[self dataSource] removeDataForPosition:path];
+}
+
+- (void)newItemDragged:(TaskItem *)item
+{
+	[[self dataSource] addData:item];
+}
 @end

@@ -13,6 +13,7 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 		beforeEach(^{
 			mockTableView = [UITableView nullMock];
 			mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
+			sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 		});
 
 		afterEach(^{
@@ -48,9 +49,6 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 		});
 
 		context(@"Getting data for dragging", ^{
-			beforeEach(^{
-				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
-			});
 
 			it(@"should return a CellTransferHelper when given a point", ^{
 				id mockTaskItem = [TaskItem nullMock];
@@ -58,6 +56,31 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 				CellTransferHelper *expected = [sut getCellTransferInfoForPoint:CGPointMake(10, 10)];
 				[[expected should] beKindOfClass:[CellTransferHelper class]];
 			});
+
+			it(@"cellForIndexPath: should call the data source cellForIndexPath:", ^{
+				[[mockDataSource should] receive:@selector(tableView:cellForRowAtIndexPath:)];
+				[sut cellForIndexPath:nil];
+			});
+		});
+
+		context(@"Adding data", ^{
+
+			it(@"removeCellAndDataFromPosition should call removeDataForPosition from data source", ^{
+				[[mockDataSource should] receive:@selector(removeDataForPosition:)];
+				[sut removeCellAndDataFromPosition:nil];
+			});
+
+			it(@"newItemDraggeds should add the data to the data source", ^{
+				[[mockDataSource should] receive:@selector(addData:)];
+				[sut newItemDragged:nil];
+			});
+
+			it(@"newItemDraggeds should add the data to the data source", ^{
+				id mockData = [TaskItem nullMockWithName:@"mockData"];
+				[[mockDataSource should] receive:@selector(addData:) withArguments:mockData];
+				[sut newItemDragged:mockData];
+			});
+
 		});
 	});
 

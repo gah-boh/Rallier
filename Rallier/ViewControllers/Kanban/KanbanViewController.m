@@ -84,9 +84,15 @@
 {
 	DefinedTableManager *tableManager = [self findTouchedTableManager:gr];
 	CellTransferHelper *transferHelper = [tableManager getCellTransferInfoForPoint:[gr locationInView:[tableManager view]]];
-	dragController = [[DragController alloc] initWithSource:tableManager
-													 helper:transferHelper
-											   draggingView:[self view]];
+	UITableViewCell *draggedCell = [tableManager cellForIndexPath:[transferHelper position]];
+	[self addCellToView:draggedCell]; // TODO: This should not be here.
+	dragController = [[DragController alloc] initWithSource:tableManager helper:transferHelper draggedCell:draggedCell];
+}
+
+- (void)addCellToView:(UITableViewCell *)cell
+{
+	[cell removeFromSuperview];
+	[[self view] addSubview:cell];
 }
 
 - (DefinedTableManager *)findTouchedTableManager:(UIPanGestureRecognizer *)gr

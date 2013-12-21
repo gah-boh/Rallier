@@ -20,4 +20,9 @@
 
 - (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point;
 
+- (UITableViewCell *)cellForIndexPath:(NSIndexPath *)indexPath;
+
+- (void)removeCellAndDataFromPosition:(NSIndexPath *)path;
+
+- (void)newItemDragged:(TaskItem *)item;
 @end

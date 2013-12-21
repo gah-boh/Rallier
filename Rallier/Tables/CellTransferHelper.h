@@ -10,9 +10,8 @@
 
 @interface CellTransferHelper : NSObject
 @property (nonatomic, strong) TaskItem *taskItem;
-@property (nonatomic, assign) int position;
-@property (nonatomic, strong) UITableViewCell *cell;
+@property (nonatomic, strong) NSIndexPath *position;
 
-- (id)initWithTaskItem:(TaskItem *)mock cell:(UITableViewCell *)cell position:(int)aPosition;
+- (id)initWithTaskItem:(TaskItem *)mock position:(NSIndexPath *)indexPath;
 
 @end

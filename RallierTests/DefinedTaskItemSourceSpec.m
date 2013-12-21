@@ -47,7 +47,7 @@ SPEC_BEGIN(DefinedTaskItemSourceSpec)
 
 			it(@"should add data for the given task item", ^{
 				id taskItemMock = [TaskItem mock];
-				[sut addData:taskItemMock forPosition:0];
+				[sut addData:taskItemMock];
 				[[theValue([[sut items] count]) should] equal:theValue(4)];
 			});
 		});

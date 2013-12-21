@@ -10,23 +10,16 @@
 
 @implementation DragController
 
-- (id)initWithSource:(DefinedTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggingView:(UIView *)draggingView
+- (id)initWithSource:(DefinedTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggedCell:(UITableViewCell *)cell
 {
 	self = [super init];
 	if (self) {
 		_sourceDragManager = sourceDragManager;
 		_draggingInfo = helper;
-		[self moveCellToDraggingView:draggingView];
+		_draggedCell = cell;
+		[self adjustDraggedCellFrame:cell];
 	}
 	return self;
-}
-
-- (void)moveCellToDraggingView:(UIView *)draggingView
-{
-	UITableViewCell *cell = [[self draggingInfo] cell];
-	[cell removeFromSuperview];
-	[draggingView addSubview:cell];
-	[self adjustDraggedCellFrame:cell];
 }
 
 - (void)adjustDraggedCellFrame:(UITableViewCell *)cell
@@ -42,14 +35,12 @@
 - (void)dragCell:(CGPoint)translation
 {
 	CGPoint cellCenter = [self translatedCellPoint:translation];
-	// TODO: Breaking law of demeter here.
-	[[[self draggingInfo] cell] setCenter:cellCenter];
+	[[self draggedCell] setCenter:cellCenter];
 }
 
 - (CGPoint)translatedCellPoint:(CGPoint)translation
 {
-	// TODO: Breaking law of demeter here.
-	UITableViewCell *draggingCell = [[self draggingInfo] cell];
+	UITableViewCell *draggingCell = [self draggedCell];
 	return CGPointMake([draggingCell center].x + translation.x,
 					   [draggingCell center].y + translation.y);
 }
@@ -57,13 +48,11 @@
 - (void)dragEndedAt:(DefinedTableManager *)destinationTableManager
 {
 	TaskItem *taskItem = [[self draggingInfo] taskItem];
-	[[destinationTableManager dataSource] addData:taskItem
-											forPosition:[[self draggingInfo] position]];
-	[[[self sourceDragManager] dataSource] removeDataForPosition:[[self draggingInfo] position]];
-	// TODO: Breaking law of demeter here.
-	UITableViewCell *draggingCell = [[self draggingInfo] cell];
+	[[self sourceDragManager] removeCellAndDataFromPosition:[[self draggingInfo] position]];
+	[destinationTableManager newItemDragged:taskItem];
+	UITableViewCell *draggingCell = [self draggedCell];
 	[draggingCell removeFromSuperview];
-//	draggingCell = nil;
+	[self setDraggedCell:nil];
 }
 
 @end

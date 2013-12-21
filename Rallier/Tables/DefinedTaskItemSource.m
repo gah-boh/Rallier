@@ -39,13 +39,12 @@
 	return [[self items] objectAtIndex:(NSUInteger) position];
 }
 
-- (void)removeDataForPosition:(int)position
+- (void)removeDataForPosition:(NSIndexPath *)indexPath
 {
-	[[self items] removeObjectAtIndex:(NSUInteger) position];
+	[[self items] removeObjectAtIndex:(NSUInteger)[indexPath row]];
 }
 
 - (void)addData:(TaskItem *)taskItem
-	forPosition:(int)position
 {
 	[[self items] addObject:taskItem];
 }

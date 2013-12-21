@@ -13,8 +13,9 @@
 
 @property (nonatomic, strong) DefinedTableManager *sourceDragManager;
 @property (nonatomic, strong) CellTransferHelper *draggingInfo;
+@property (nonatomic, strong) UITableViewCell *draggedCell;
 
-- (id)initWithSource:(DefinedTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggingView:(UIView *)draggingView;
+- (id)initWithSource:(DefinedTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggedCell:(UITableViewCell *)cell;
 
 - (void)dragCell:(CGPoint)translation;
 

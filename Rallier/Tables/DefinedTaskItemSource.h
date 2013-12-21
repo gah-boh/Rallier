@@ -11,9 +11,9 @@
 
 - (TaskItem *)itemForPosition:(int)position;
 
-- (void)removeDataForPosition:(int)position;
+- (void)removeDataForPosition:(NSIndexPath *)indexPath;
 
-- (void)addData:(TaskItem *)taskItem forPosition:(int)position;
+- (void)addData:(TaskItem *)taskItem;
 @end
 
 @interface DefinedTaskItemSource : NSObject <TaskItemSourceProtocol>
