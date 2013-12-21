@@ -15,9 +15,7 @@
 								 userInfo:nil];
 }
 
-- (id)initWithTaskItem:(TaskItem *)aTaskItem
-				  cell:(UITableViewCell *)aCell
-			  position:(int)aPosition
+- (id)initWithTaskItem:(TaskItem *)aTaskItem cell:(UITableViewCell *)aCell position:(int)aPosition
 {
 	self = [super init];
 	if (self) {
@@ -28,4 +26,5 @@
 
 	return self;
 }
+
 @end

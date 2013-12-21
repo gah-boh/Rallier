@@ -44,10 +44,8 @@
 - (CellTransferHelper *)getDataForSelectedCell:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [[self view] cellForRowAtIndexPath:indexPath];
-	TaskItem *taskItem = [[self dataSource] itemForPosition:[indexPath row]];
-	CellTransferHelper *cellInfo = [[CellTransferHelper alloc] initWithTaskItem:taskItem
-																		   cell:cell
-																	   position:[indexPath row]];
+	TaskItem *taskItem = [[self dataSource] itemForPosition:(int)[indexPath row]];
+	CellTransferHelper *cellInfo = [[CellTransferHelper alloc] initWithTaskItem:taskItem cell:cell position:(int) [indexPath row]];
 	return cellInfo;
 }
 

@@ -24,7 +24,7 @@
 	NSString *cellIdentifier = @"Cell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-	TaskItem *currentItem = [self itemForPosition:[indexPath row]];
+	TaskItem *currentItem = [self itemForPosition:(int)[indexPath row]];
 	[[cell textLabel] setText:[currentItem taskName]];
 	return cell;
 }

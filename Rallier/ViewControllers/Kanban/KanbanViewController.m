@@ -18,6 +18,8 @@
 @property(nonatomic, strong) DefinedTableManager *destinationDragManager;
 @property(nonatomic, strong) UITableViewCell *draggingCell;
 @property(nonatomic, strong) CellTransferHelper *draggingInfo;
+@property (nonatomic, assign) CGRect draggingOffset;
+
 @end
 
 @implementation KanbanViewController
@@ -112,7 +114,17 @@
 	UITableViewCell *cell = [[self draggingInfo] cell];
 	[cell removeFromSuperview];
 	[[self view] addSubview:cell];
+	[self adjustDraggedCellFrame:cell];
 	[self setDraggingCell:cell];
+}
+
+- (void)adjustDraggedCellFrame:(UITableViewCell *)cell
+{
+	CGRect parentViewFrame = [[[self sourceDragManager] view] frame];
+	CGPoint newCellOrigin = [cell frame].origin;
+	newCellOrigin.x += parentViewFrame.origin.x;
+	newCellOrigin.y += parentViewFrame.origin.y;
+	[cell setFrame:CGRectMake(newCellOrigin.x, newCellOrigin.y, [cell frame].size.width, [cell frame].size.height)];
 }
 
 - (void)dragCell:(UIPanGestureRecognizer *)gr

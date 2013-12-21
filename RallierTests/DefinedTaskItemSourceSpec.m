@@ -36,21 +36,18 @@ SPEC_BEGIN(DefinedTaskItemSourceSpec)
 			});
 
 			it(@"should return the correct item for the given index path", ^{
-				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-				TaskItem *expected = [sut itemForPosition:indexPath];
+				TaskItem *expected = [sut itemForPosition:0];
 				[[expected should] equal:[items objectAtIndex:0]];
 			});
 
 			it(@"should delete the data from the given indexPath", ^{
-				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-				[sut removeDataForPosition:indexPath];
+				[sut removeDataForPosition:0];
 				[[theValue([[sut items] count]) should] equal:theValue(2)];
 			});
 
 			it(@"should add data for the given task item", ^{
 				id taskItemMock = [TaskItem mock];
-				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-				[sut addData:taskItemMock forPosition:indexPath];
+				[sut addData:taskItemMock forPosition:0];
 				[[theValue([[sut items] count]) should] equal:theValue(4)];
 			});
 		});
