@@ -22,6 +22,8 @@
 		05B8D10A185C05DB00008F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0EF185C05DB00008F5A /* Foundation.framework */; };
 		05B8D10B185C05DB00008F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0F3185C05DB00008F5A /* UIKit.framework */; };
 		05B8D113185C05DB00008F5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05B8D111185C05DB00008F5A /* InfoPlist.strings */; };
+		05C4C5151866195600A3DFC9 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C4C5141866195600A3DFC9 /* TaskCell.xib */; };
+		05C4C51918661A9100A3DFC9 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C4C51818661A9100A3DFC9 /* TaskCell.m */; };
 		304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */; };
 		304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */; };
 		304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */; };
@@ -64,6 +66,9 @@
 		05B8D108185C05DB00008F5A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		05B8D110185C05DB00008F5A /* RallierTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RallierTests-Info.plist"; sourceTree = "<group>"; };
 		05B8D112185C05DB00008F5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05C4C5141866195600A3DFC9 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskCell.xib; path = Tables/TableViewCells/TaskCell.xib; sourceTree = "<group>"; };
+		05C4C51718661A9100A3DFC9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell.h; path = Tables/TableViewCells/TaskCell.h; sourceTree = "<group>"; };
+		05C4C51818661A9100A3DFC9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCell.m; path = Tables/TableViewCells/TaskCell.m; sourceTree = "<group>"; };
 		098A8C046697414A81846C7F /* Pods-RallierTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RallierTests.xcconfig"; path = "Pods/Pods-RallierTests.xcconfig"; sourceTree = "<group>"; };
 		304AA2A13305A29D905FE29D /* DragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DragController.h; path = Controllers/DragController.h; sourceTree = "<group>"; };
 		304AA3D68BDD9E0102E62407 /* TaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskItem.h; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				0536A0B5185CB13B0085A16D /* DefinedTableManager.h */,
+				05C4C5161866196700A3DFC9 /* TableViewCells */,
 				0536A0B6185CB13B0085A16D /* DefinedTableManager.m */,
 				304AA8DD88AB9347F941B093 /* DefinedTaskItemSource.m */,
 				304AA6A6017F62E4189BA717 /* DefinedTaskItemSource.h */,
@@ -215,6 +221,16 @@
 				05B8D111185C05DB00008F5A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05C4C5161866196700A3DFC9 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				05C4C5141866195600A3DFC9 /* TaskCell.xib */,
+				05C4C51718661A9100A3DFC9 /* TaskCell.h */,
+				05C4C51818661A9100A3DFC9 /* TaskCell.m */,
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 		304AA282058C22628C7FEC24 /* Models */ = {
@@ -313,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B8D0FA185C05DB00008F5A /* InfoPlist.strings in Resources */,
+				05C4C5151866195600A3DFC9 /* TaskCell.xib in Resources */,
 				05B8D102185C05DB00008F5A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +388,7 @@
 				05B8D0FC185C05DB00008F5A /* main.m in Sources */,
 				304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */,
 				304AA7E5D51FF06495F02D23 /* DefinedTaskItemSource.m in Sources */,
+				05C4C51918661A9100A3DFC9 /* TaskCell.m in Sources */,
 				304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */,
 				304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */,
 			);

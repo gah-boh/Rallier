@@ -11,6 +11,8 @@
 
 @class CellTransferHelper;
 
+extern NSString * const taskCellIdentifier;
+
 @interface DefinedTableManager : NSObject <UITableViewDelegate>
 
 @property (nonatomic) UITableView *view;

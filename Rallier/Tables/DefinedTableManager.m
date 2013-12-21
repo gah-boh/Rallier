@@ -10,6 +10,8 @@
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
 
+NSString * const taskCellIdentifier = @"Cell";
+
 @implementation DefinedTableManager
 {
 	UITableViewCell *draggedCell;
@@ -31,7 +33,7 @@
 
 - (void)setUpCellReuseIdentifiers
 {
-	[_view registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+	[_view registerClass:[UITableViewCell class] forCellReuseIdentifier:taskCellIdentifier];
 }
 
 
