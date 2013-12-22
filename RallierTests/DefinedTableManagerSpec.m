@@ -46,6 +46,10 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 				[[sourceSpy.argument should] equal:mockDataSource];
 			});
 
+			it(@"should have a global variable of rowHeight that is bigger than 0", ^{
+				[[theValue(rowHeight) should] beGreaterThan:theValue(0)];
+			});
+
 		});
 
 		context(@"Getting data for dragging", ^{

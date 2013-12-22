@@ -12,6 +12,8 @@
 
 NSString * const taskCellIdentifier = @"TaskCell";
 
+CGFloat const rowHeight = 75.0;
+
 @implementation DefinedTableManager
 {
 }
@@ -26,6 +28,7 @@ NSString * const taskCellIdentifier = @"TaskCell";
 		[self setUpCellReuseIdentifiers];
 		[_view setDelegate:self];
 		[_view setDataSource:dataSource];
+		[tableView setRowHeight:rowHeight];
 	}
 	return self;
 }

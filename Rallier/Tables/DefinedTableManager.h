@@ -12,6 +12,7 @@
 @class CellTransferHelper;
 
 extern NSString * const taskCellIdentifier;
+extern CGFloat const rowHeight;
 
 @interface DefinedTableManager : NSObject <UITableViewDelegate>
 
