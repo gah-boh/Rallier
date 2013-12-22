@@ -3,7 +3,7 @@
 #import "TaskItem.h"
 #import "TaskCellManager.h"
 
-SPEC_BEGIN(DefinedTaskItemSourceSpec)
+SPEC_BEGIN(KanbanTableSourceSpec)
 	describe(@"Defined Task Item Source", ^{
 		__block KanbanTableSource *sut;
 		__block id taskCellManagerMock;

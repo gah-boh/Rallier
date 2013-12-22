@@ -3,7 +3,7 @@
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
 
-SPEC_BEGIN(DefinedTableManagerSpec)
+SPEC_BEGIN(KanbanManagerSpec)
 
 	describe(@"KanbanTableManager", ^{
 		__block KanbanTableManager *sut;
