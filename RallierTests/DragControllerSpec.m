@@ -19,6 +19,10 @@ describe(@"Drag Controller", ^{
 
 		sut = [[DragController alloc] initWithSource:sourceDragManagerMock helper:cellTransferHelperMock draggedCell:cellMock];
 	});
+	
+	afterEach(^{
+		sut = nil;
+	});
 
 	context(@"Construction", ^{
 

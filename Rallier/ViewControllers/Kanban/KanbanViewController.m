@@ -8,7 +8,6 @@
 
 #import "KanbanViewController.h"
 #import "KanbanTableManager.h"
-#import "KanbanTableSource.h"
 #import "TaskItem.h"
 #import "CellTransferHelper.h"
 #import "DragController.h"

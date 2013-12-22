@@ -3,14 +3,17 @@
 
 SPEC_BEGIN(TaskItemSpec)
 
-	describe(@"TaskItem", ^{
-		__block TaskItem *stu;
-
-		it(@"should initialize with name", ^{
-			stu = [[TaskItem alloc] initWithName:@"Testing"];
-			[[[stu taskName] should] equal:@"Testing"];
-		});
-
+describe(@"TaskItem", ^{
+	__block TaskItem *stu;
+	
+	beforeEach(^{
+		stu = [[TaskItem alloc] initWithName:@"Testing"];
 	});
+
+	it(@"should initialize with name", ^{
+		[[[stu taskName] should] equal:@"Testing"];
+	});
+
+});
 
 SPEC_END

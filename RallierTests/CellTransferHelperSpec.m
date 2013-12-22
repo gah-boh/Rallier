@@ -10,7 +10,6 @@ SPEC_BEGIN(CellTransferHelperSpec)
 
 			beforeEach(^{
 				id taskMock = [TaskItem nullMockWithName:@"taskMock"];
-				id cellMock = [UITableViewCell nullMockWithName:@"cellMock"];
 				sut = [[CellTransferHelper alloc] initWithTaskItem:taskMock position:[NSIndexPath indexPathForRow:1 inSection:0]];
 			});
 
