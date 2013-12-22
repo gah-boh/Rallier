@@ -7,16 +7,24 @@
 #import "TaskItem.h"
 #import "KanbanTableManager.h"
 #import "TaskCell.h"
+#import "TaskCellManager.h"
 
 
 @implementation KanbanTableSource
 
-
 - (id)init
+{
+	@throw [NSException exceptionWithName:@"Wrong initializer"
+								   reason:@"use initWithCellManager:"
+								 userInfo:nil];
+}
+
+- (id)initWithCellManager:(TaskCellManager *)cellManager
 {
 	self = [super init];
 	if (self) {
 		_items = [NSMutableArray array];
+		_taskCellManager = cellManager;
 	}
 	return self;
 }
@@ -24,7 +32,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:taskCellIdentifier forIndexPath:indexPath];
-
+	[[self taskCellManager] manageCell:cell];
 	TaskItem *currentItem = [self itemForPosition:(int)[indexPath row]];
 	[[cell taskName] setText:[currentItem taskName]];
 	return cell;

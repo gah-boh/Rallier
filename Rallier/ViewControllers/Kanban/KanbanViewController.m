@@ -11,6 +11,7 @@
 #import "TaskItem.h"
 #import "CellTransferHelper.h"
 #import "DragController.h"
+#import "TaskCellManager.h"
 
 @interface KanbanViewController ()
 
@@ -124,8 +125,10 @@
 
 - (void)createDefinedTableManager
 {
+	// TODO: Need to create a factory.
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStylePlain];
-	KanbanTableSource *source = [[KanbanTableSource alloc] init];
+	TaskCellManager *taskCellManager = [[TaskCellManager alloc] init];
+	KanbanTableSource *source = [[KanbanTableSource alloc] initWithCellManager:taskCellManager];
 	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
 	[self setDefinedTableManager:definedManager];
 	[[self tableManagers] addObject:definedManager];
@@ -140,7 +143,8 @@
 - (void)createInProgressTableManager
 {
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStylePlain];
-	KanbanTableSource *source = [[KanbanTableSource alloc] init];
+	TaskCellManager *taskCellManager = [[TaskCellManager alloc] init];
+	KanbanTableSource *source = [[KanbanTableSource alloc] initWithCellManager:taskCellManager];
 	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];
