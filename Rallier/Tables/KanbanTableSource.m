@@ -3,13 +3,13 @@
 // Copyright (c) 2013 Gabo Obregon. All rights reserved.
 //
 
-#import "DefinedTaskItemSource.h"
+#import "KanbanTableSource.h"
 #import "TaskItem.h"
-#import "DefinedTableManager.h"
+#import "KanbanTableManager.h"
 #import "TaskCell.h"
 
 
-@implementation DefinedTaskItemSource
+@implementation KanbanTableSource
 
 
 - (id)init

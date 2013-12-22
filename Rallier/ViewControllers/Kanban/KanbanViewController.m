@@ -7,8 +7,8 @@
 //
 
 #import "KanbanViewController.h"
-#import "DefinedTableManager.h"
-#import "DefinedTaskItemSource.h"
+#import "KanbanTableManager.h"
+#import "KanbanTableSource.h"
 #import "TaskItem.h"
 #import "CellTransferHelper.h"
 #import "DragController.h"
@@ -82,7 +82,7 @@
 
 - (void)createDragController:(UIPanGestureRecognizer *)gr
 {
-	DefinedTableManager *tableManager = [self findTouchedTableManager:gr];
+	KanbanTableManager *tableManager = [self findTouchedTableManager:gr];
 	CellTransferHelper *transferHelper = [tableManager getCellTransferInfoForPoint:[gr locationInView:[tableManager view]]];
 	UITableViewCell *draggedCell = [tableManager cellForIndexPath:[transferHelper position]];
 	[self addCellToView:draggedCell]; // TODO: This should not be here.
@@ -95,9 +95,9 @@
 	[[self view] addSubview:cell];
 }
 
-- (DefinedTableManager *)findTouchedTableManager:(UIPanGestureRecognizer *)gr
+- (KanbanTableManager *)findTouchedTableManager:(UIPanGestureRecognizer *)gr
 {
-	for (DefinedTableManager *tableManager in [self tableManagers]) {
+	for (KanbanTableManager *tableManager in [self tableManagers]) {
 		UITableView *tableView = [tableManager view];
 		CGPoint localizedPoint = [gr locationInView:tableView];
 		BOOL isInView = [[tableManager view] pointInside:localizedPoint
@@ -126,8 +126,8 @@
 - (void)createDefinedTableManager
 {
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStylePlain];
-	DefinedTaskItemSource *source = [[DefinedTaskItemSource alloc] init];
-	DefinedTableManager *definedManager = [[DefinedTableManager alloc] initWithTableView:tableView source:source];
+	KanbanTableSource *source = [[KanbanTableSource alloc] init];
+	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
 	[self setDefinedTableManager:definedManager];
 	[[self tableManagers] addObject:definedManager];
 
@@ -141,8 +141,8 @@
 - (void)createInProgressTableManager
 {
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStylePlain];
-	DefinedTaskItemSource *source = [[DefinedTaskItemSource alloc] init];
-	DefinedTableManager *inProgress = [[DefinedTableManager alloc] initWithTableView:tableView source:source];
+	KanbanTableSource *source = [[KanbanTableSource alloc] init];
+	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];
 

@@ -16,6 +16,6 @@
 - (void)addData:(TaskItem *)taskItem;
 @end
 
-@interface DefinedTaskItemSource : NSObject <TaskItemSourceProtocol>
+@interface KanbanTableSource : NSObject <TaskItemSourceProtocol>
 @property(nonatomic, strong) NSMutableArray *items;
 @end

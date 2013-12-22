@@ -1,13 +1,13 @@
 #import "Kiwi.h"
-#import "DefinedTaskItemSource.h"
+#import "KanbanTableSource.h"
 #import "TaskItem.h"
 
 SPEC_BEGIN(DefinedTaskItemSourceSpec)
 	describe(@"Defined Task Item Source", ^{
-		__block DefinedTaskItemSource *sut;
+		__block KanbanTableSource *sut;
 
 		beforeEach(^{
-			sut = [[DefinedTaskItemSource alloc] init];
+			sut = [[KanbanTableSource alloc] init];
 		});
 
 		afterEach(^{

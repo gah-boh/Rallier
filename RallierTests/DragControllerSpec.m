@@ -1,6 +1,6 @@
 #import "Kiwi.h"
 #import "DragController.h"
-#import "DefinedTableManager.h"
+#import "KanbanTableManager.h"
 #import "CellTransferHelper.h"
 
 SPEC_BEGIN(DragControllerSpec)
@@ -13,7 +13,7 @@ describe(@"Drag Controller", ^{
 	__block id cellMock;
 
 	beforeEach(^{
-		sourceDragManagerMock = [DefinedTableManager nullMockWithName:@"sourceDragManagerMock"];
+		sourceDragManagerMock = [KanbanTableManager nullMockWithName:@"sourceDragManagerMock"];
 		cellTransferHelperMock = [CellTransferHelper nullMockWithName:@"cellTransferHelperMock"];
 		cellMock = [UITableViewCell nullMockWithName:@"cellMock"];
 
@@ -48,7 +48,7 @@ describe(@"Drag Controller", ^{
 		});
 
 		it(@"dragEndedAt: should tell the destinationTableManager newItemDragged:", ^{
-			id destinationMock = [DefinedTableManager nullMockWithName:@"destinationTableManagerMock"];
+			id destinationMock = [KanbanTableManager nullMockWithName:@"destinationTableManagerMock"];
 			[[destinationMock should] receive:@selector(newItemDragged:)];
 			[sut dragEndedAt:destinationMock];
 		});

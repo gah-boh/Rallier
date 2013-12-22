@@ -4,13 +4,13 @@
 //
 
 #import "DragController.h"
-#import "DefinedTableManager.h"
+#import "KanbanTableManager.h"
 #import "CellTransferHelper.h"
 
 
 @implementation DragController
 
-- (id)initWithSource:(DefinedTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggedCell:(UITableViewCell *)cell
+- (id)initWithSource:(KanbanTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggedCell:(UITableViewCell *)cell
 {
 	self = [super init];
 	if (self) {
@@ -45,7 +45,7 @@
 					   [draggingCell center].y + translation.y);
 }
 
-- (void)dragEndedAt:(DefinedTableManager *)destinationTableManager
+- (void)dragEndedAt:(KanbanTableManager *)destinationTableManager
 {
 	TaskItem *taskItem = [[self draggingInfo] taskItem];
 	[[self sourceDragManager] removeCellAndDataFromPosition:[[self draggingInfo] position]];

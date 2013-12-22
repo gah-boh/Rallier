@@ -1,5 +1,5 @@
 //
-//  DefinedTableManager.h
+//  KanbanTableManager.h
 //  Rallier
 //
 //  Created by Gabo Obregon on 12/14/13.
@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DefinedTaskItemSource.h"
+#import "KanbanTableSource.h"
 
 @class CellTransferHelper;
 
 extern NSString * const taskCellIdentifier;
 extern CGFloat const rowHeight;
 
-@interface DefinedTableManager : NSObject <UITableViewDelegate>
+@interface KanbanTableManager : NSObject <UITableViewDelegate>
 
 @property (nonatomic) UITableView *view;
 @property (nonatomic) id <TaskItemSourceProtocol> dataSource;

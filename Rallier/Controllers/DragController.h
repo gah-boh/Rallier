@@ -5,19 +5,19 @@
 
 #import <Foundation/Foundation.h>
 
-@class DefinedTableManager;
+@class KanbanTableManager;
 @class CellTransferHelper;
 
 
 @interface DragController : NSObject
 
-@property (nonatomic, strong) DefinedTableManager *sourceDragManager;
+@property (nonatomic, strong) KanbanTableManager *sourceDragManager;
 @property (nonatomic, strong) CellTransferHelper *draggingInfo;
 @property (nonatomic, strong) UITableViewCell *draggedCell;
 
-- (id)initWithSource:(DefinedTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggedCell:(UITableViewCell *)cell;
+- (id)initWithSource:(KanbanTableManager *)sourceDragManager helper:(CellTransferHelper *)helper draggedCell:(UITableViewCell *)cell;
 
 - (void)dragCell:(CGPoint)translation;
 
-- (void)dragEndedAt:(DefinedTableManager *)destinationTableManager;
+- (void)dragEndedAt:(KanbanTableManager *)destinationTableManager;
 @end

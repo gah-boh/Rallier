@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class DefinedTableManager;
+@class KanbanTableManager;
 @class CellTransferHelper;
 
 @interface KanbanViewController : UIViewController
 
-@property (nonatomic) DefinedTableManager *definedTableManager;
-@property (nonatomic) DefinedTableManager *inProgressTableManager;
+@property (nonatomic) KanbanTableManager *definedTableManager;
+@property (nonatomic) KanbanTableManager *inProgressTableManager;
 @property (nonatomic) NSMutableArray *tableManagers;
 
 @end

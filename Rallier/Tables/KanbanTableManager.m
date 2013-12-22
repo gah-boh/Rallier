@@ -1,12 +1,12 @@
 //
-//  DefinedTableManager.m
+//  KanbanTableManager.m
 //  Rallier
 //
 //  Created by Gabo Obregon on 12/14/13.
 //  Copyright (c) 2013 Gabo Obregon. All rights reserved.
 //
 
-#import "DefinedTableManager.h"
+#import "KanbanTableManager.h"
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
 
@@ -14,7 +14,7 @@ NSString * const taskCellIdentifier = @"TaskCell";
 
 CGFloat const rowHeight = 75.0;
 
-@implementation DefinedTableManager
+@implementation KanbanTableManager
 {
 }
 

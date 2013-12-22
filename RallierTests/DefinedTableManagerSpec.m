@@ -1,19 +1,19 @@
 #import "Kiwi.h"
-#import "DefinedTableManager.h"
+#import "KanbanTableManager.h"
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
 
 SPEC_BEGIN(DefinedTableManagerSpec)
 
-	describe(@"DefinedTableManager", ^{
-		__block DefinedTableManager *sut;
+	describe(@"KanbanTableManager", ^{
+		__block KanbanTableManager *sut;
 		__block id mockTableView;
 		__block id mockDataSource;
 
 		beforeEach(^{
 			mockTableView = [UITableView nullMock];
 			mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
-			sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 		});
 
 		afterEach(^{
@@ -27,7 +27,7 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 			beforeEach(^{
 				delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
 				sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
-				sut = [[DefinedTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+				sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 			});
 
 			it(@"should conform to the table view delegate protocol", ^{
@@ -48,6 +48,11 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 
 			it(@"should have a global variable of rowHeight that is bigger than 0", ^{
 				[[theValue(rowHeight) should] beGreaterThan:theValue(0)];
+			});
+
+			it(@"on initialization the table view should receive setRowHeight with the global variable value", ^{
+				[[mockTableView should] receive:@selector(setRowHeight:) withArguments:theValue(rowHeight)];
+				sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 			});
 
 		});
@@ -81,7 +86,8 @@ SPEC_BEGIN(DefinedTableManagerSpec)
 
 			it(@"newItemDraggeds should add the data to the data source", ^{
 				id mockData = [TaskItem nullMockWithName:@"mockData"];
-				[[mockDataSource should] receive:@selector(addData:) withArguments:mockData];
+				[[mockDataSource should] receive:@selector(addData:)
+								   withArguments:mockData];
 				[sut newItemDragged:mockData];
 			});
 

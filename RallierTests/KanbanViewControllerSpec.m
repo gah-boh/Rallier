@@ -1,6 +1,6 @@
 #import "Kiwi.h"
 #import "KanbanViewController.h"
-#import "DefinedTableManager.h"
+#import "KanbanTableManager.h"
 
 SPEC_BEGIN(KanbanViewControllerSpec)
 
@@ -24,7 +24,7 @@ describe(@"KanbanViewController", ^{
 
 	context(@"View Loading", ^{
 
-		it(@"will create the DefinedTableManager", ^{
+		it(@"will create the KanbanTableManager", ^{
 			[stu view];
 			[[stu definedTableManager] shouldNotBeNil];
 		});
