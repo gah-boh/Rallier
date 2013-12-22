@@ -29,8 +29,11 @@
 		304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */; };
 		304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA94948306D6C587C2DCF /* TaskItemSpec.m */; };
 		304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */; };
+		304AA553EC40FA414F845844 /* TaskCellManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAC46AF554F08AB93115E /* TaskCellManagerSpec.m */; };
 		304AA7E5D51FF06495F02D23 /* KanbanTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA8DD88AB9347F941B093 /* KanbanTableSource.m */; };
 		304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA52CFCF951CC01DCEED6 /* DragController.m */; };
+		304AAA5542A4F7EBEB0754FC /* TaskCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA07244A9EF3161D46319 /* TaskCellManager.m */; };
+		304AAC0F7DBA09C35FF42091 /* TaskCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA1247D8841EFB6CD183B /* TaskCellSpec.m */; };
 		304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAD5F6880A6879DED478B /* CellTransferHelper.m */; };
 		A4CB093542D545DCB03C09CA /* libPods-RallierTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */; };
 /* End PBXBuildFile section */
@@ -70,13 +73,17 @@
 		05C4C51718661A9100A3DFC9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell.h; path = Tables/TableViewCells/TaskCell.h; sourceTree = "<group>"; };
 		05C4C51818661A9100A3DFC9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCell.m; path = Tables/TableViewCells/TaskCell.m; sourceTree = "<group>"; };
 		098A8C046697414A81846C7F /* Pods-RallierTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RallierTests.xcconfig"; path = "Pods/Pods-RallierTests.xcconfig"; sourceTree = "<group>"; };
+		304AA07244A9EF3161D46319 /* TaskCellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCellManager.m; path = Tables/TableViewCells/TaskCellManager.m; sourceTree = "<group>"; };
+		304AA1247D8841EFB6CD183B /* TaskCellSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCellSpec.m; sourceTree = "<group>"; };
 		304AA2A13305A29D905FE29D /* DragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DragController.h; path = Controllers/DragController.h; sourceTree = "<group>"; };
 		304AA3D68BDD9E0102E62407 /* TaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskItem.h; sourceTree = "<group>"; };
 		304AA52CFCF951CC01DCEED6 /* DragController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DragController.m; path = Controllers/DragController.m; sourceTree = "<group>"; };
 		304AA6A6017F62E4189BA717 /* KanbanTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KanbanTableSource.h; path = Tables/KanbanTableSource.h; sourceTree = "<group>"; };
 		304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItem.m; sourceTree = "<group>"; };
 		304AA8DD88AB9347F941B093 /* KanbanTableSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KanbanTableSource.m; path = Tables/KanbanTableSource.m; sourceTree = "<group>"; };
+		304AA941D478A09FD28FE5C6 /* TaskCellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCellManager.h; path = Tables/TableViewCells/TaskCellManager.h; sourceTree = "<group>"; };
 		304AA94948306D6C587C2DCF /* TaskItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItemSpec.m; sourceTree = "<group>"; };
+		304AAC46AF554F08AB93115E /* TaskCellManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCellManagerSpec.m; sourceTree = "<group>"; };
 		304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellTransferHelperSpec.m; sourceTree = "<group>"; };
 		304AAD5F6880A6879DED478B /* CellTransferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellTransferHelper.m; path = Tables/CellTransferHelper.m; sourceTree = "<group>"; };
 		304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragControllerSpec.m; sourceTree = "<group>"; };
@@ -210,6 +217,8 @@
 				304AAF3CC3E1F3509AC76C55 /* DefinedTaskItemSourceSpec.m */,
 				304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */,
 				304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */,
+				304AAC46AF554F08AB93115E /* TaskCellManagerSpec.m */,
+				304AA1247D8841EFB6CD183B /* TaskCellSpec.m */,
 			);
 			path = RallierTests;
 			sourceTree = "<group>";
@@ -229,6 +238,8 @@
 				05C4C5141866195600A3DFC9 /* TaskCell.xib */,
 				05C4C51718661A9100A3DFC9 /* TaskCell.h */,
 				05C4C51818661A9100A3DFC9 /* TaskCell.m */,
+				304AA07244A9EF3161D46319 /* TaskCellManager.m */,
+				304AA941D478A09FD28FE5C6 /* TaskCellManager.h */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -391,6 +402,7 @@
 				05C4C51918661A9100A3DFC9 /* TaskCell.m in Sources */,
 				304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */,
 				304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */,
+				304AAA5542A4F7EBEB0754FC /* TaskCellManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +416,8 @@
 				304AA02CCC2A0FD7EF2A0372 /* DefinedTaskItemSourceSpec.m in Sources */,
 				304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */,
 				304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */,
+				304AA553EC40FA414F845844 /* TaskCellManagerSpec.m in Sources */,
+				304AAC0F7DBA09C35FF42091 /* TaskCellSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
