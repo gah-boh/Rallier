@@ -48,8 +48,9 @@
 	return [[self items] objectAtIndex:(NSUInteger) position];
 }
 
-- (void)removeDataForPosition:(NSIndexPath *)indexPath
+- (void)removeCell:(UITableViewCell *)cell path:(NSIndexPath *)indexPath
 {
+	[[self taskCellManager] stopManagingCell:cell];
 	[[self items] removeObjectAtIndex:(NSUInteger)[indexPath row]];
 }
 

@@ -75,8 +75,8 @@ SPEC_BEGIN(KanbanManagerSpec)
 		context(@"Adding data", ^{
 
 			it(@"removeCellAndDataFromPosition should call removeDataForPosition from data source", ^{
-				[[mockDataSource should] receive:@selector(removeDataForPosition:)];
-				[sut removeCellAndDataFromPosition:nil];
+				[[mockDataSource should] receive:@selector(removeCell:path:)];
+				[sut removeCell:nil data:nil ];
 			});
 
 			it(@"newItemDraggeds should add the data to the data source", ^{

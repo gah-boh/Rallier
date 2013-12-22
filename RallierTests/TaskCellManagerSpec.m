@@ -53,6 +53,14 @@ describe(@"Task Cell Manager", ^{
 			[[theValue([[sut managedCells] count]) should] equal:theValue(2)];
 		});
 
+		it(@"stop managing cell will remove a cell from managedCells", ^{
+			id differentCell = [TaskCell nullMock];
+			[sut manageCell:differentCell];
+			[sut manageCell:cellMock];
+			[sut stopManagingCell:cellMock];
+			[[theValue([[sut managedCells] count]) should] beLessThan:theValue(2)];
+		});
+
 	});
 });
 

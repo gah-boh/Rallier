@@ -27,6 +27,13 @@
 	[[taskCell toDo] setDelegate:self];
 }
 
+- (void)stopManagingCell:(UITableViewCell *)cell
+{
+	[[self managedCells] removeObject:cell];
+	[[(TaskCell *) cell estimate] setDelegate:self];
+	[[(TaskCell *) cell toDo] setDelegate:self];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	[textField resignFirstResponder];

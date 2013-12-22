@@ -62,9 +62,10 @@ CGFloat const rowHeight = 75.0;
 	[_view setDelegate:nil];
 }
 
-- (void)removeCellAndDataFromPosition:(NSIndexPath *)path
+- (void)removeCell:(UITableViewCell *)cell data:(NSIndexPath *)path
 {
-	[[self dataSource] removeDataForPosition:path];
+	[[self dataSource] removeCell:cell path:path];
+	[[self view] reloadData];
 }
 
 - (void)newItemDragged:(TaskItem *)item

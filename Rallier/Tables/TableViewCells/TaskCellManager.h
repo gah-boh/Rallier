@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) NSMutableSet *managedCells;
 
+- (void)stopManagingCell:(UITableViewCell *)cell;
 @end

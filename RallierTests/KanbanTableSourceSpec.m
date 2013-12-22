@@ -48,7 +48,7 @@ SPEC_BEGIN(KanbanTableSourceSpec)
 			});
 
 			it(@"should delete the data from the given indexPath", ^{
-				[sut removeDataForPosition:0];
+				[sut removeCell:nil path:0];
 				[[theValue([[sut items] count]) should] equal:theValue(2)];
 			});
 
@@ -62,8 +62,10 @@ SPEC_BEGIN(KanbanTableSourceSpec)
 		context(@"Getting cells", ^{
 
 			__block NSMutableArray *items;
+			__block id taskCellMock;
 
 			beforeEach(^{
+				taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
 				items = [NSMutableArray array];
 				[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up"]];
 				[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests"]];
@@ -73,10 +75,14 @@ SPEC_BEGIN(KanbanTableSourceSpec)
 
 			it(@"should add the cell to the manager", ^{
 				id tableViewMock = [UITableView nullMockWithName:@"tableViewMock"];
-				id taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
 				[tableViewMock stub:@selector(dequeueReusableCellWithIdentifier:forIndexPath:) andReturn:taskCellMock];
 				[[taskCellManagerMock should] receive:@selector(manageCell:) withArguments:taskCellMock];
 				[sut tableView:tableViewMock cellForRowAtIndexPath:nil];
+			});
+
+			it(@"removeCell:path should tell the taskCellManager to stopManaging: the cell", ^{
+				[[taskCellManagerMock should] receive:@selector(stopManagingCell:)];
+				[sut removeCell:taskCellMock path:nil];
 			});
 
 		});

@@ -11,7 +11,8 @@
 @protocol TaskItemSourceProtocol <UITableViewDataSource>
 
 - (TaskItem *)itemForPosition:(int)position;
-- (void)removeDataForPosition:(NSIndexPath *)indexPath;
+
+- (void)removeCell:(UITableViewCell *)cell path:(NSIndexPath *)indexPath;
 - (void)addData:(TaskItem *)taskItem;
 
 @end

@@ -47,7 +47,7 @@ describe(@"Drag Controller", ^{
 		});
 
 		it(@"dragEndedAt: should tell the sourceDragManager to removeCellAndDataFromPositon:", ^{
-			[[[sut sourceDragManager] should] receive:@selector(removeCellAndDataFromPosition:)];
+			[[[sut sourceDragManager] should] receive:@selector(removeCell:data:)];
 			[sut dragEndedAt:nil];
 		});
 

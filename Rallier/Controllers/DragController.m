@@ -48,9 +48,9 @@
 - (void)dragEndedAt:(KanbanTableManager *)destinationTableManager
 {
 	TaskItem *taskItem = [[self draggingInfo] taskItem];
-	[[self sourceDragManager] removeCellAndDataFromPosition:[[self draggingInfo] position]];
-	[destinationTableManager newItemDragged:taskItem];
 	UITableViewCell *draggingCell = [self draggedCell];
+	[[self sourceDragManager] removeCell:draggingCell data:[[self draggingInfo] position]];
+	[destinationTableManager newItemDragged:taskItem];
 	[draggingCell removeFromSuperview];
 	[self setDraggedCell:nil];
 }

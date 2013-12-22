@@ -25,7 +25,7 @@ extern CGFloat const rowHeight;
 
 - (UITableViewCell *)cellForIndexPath:(NSIndexPath *)indexPath;
 
-- (void)removeCellAndDataFromPosition:(NSIndexPath *)path;
+- (void)removeCell:(UITableViewCell *)cell data:(NSIndexPath *)path;
 
 - (void)newItemDragged:(TaskItem *)item;
 @end
