@@ -8,8 +8,10 @@
 
 @interface TaskItem : NSObject
 
-@property (nonatomic) NSString *taskName;
+@property (nonatomic, strong) NSString *taskName;
+@property (nonatomic, strong) NSNumber *estimate;
+@property (nonatomic, strong) NSNumber *toDo;
 
-- (id)initWithName:(NSString *)name;
+- (id)initWithName:(NSString *)name estimate:(NSNumber *)estimate toDo:(NSNumber *)toDo;
 
 @end

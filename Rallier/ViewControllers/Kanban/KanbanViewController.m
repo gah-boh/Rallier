@@ -134,9 +134,9 @@
 	[[self tableManagers] addObject:definedManager];
 
 	NSMutableArray *items = [NSMutableArray array];
-	[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up"]];
-	[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests"]];
-	[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit"]];
+	[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:@0 toDo:@0]];
+	[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:@0 toDo:@0]];
+	[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:@0 toDo:@0]];
 	[source setItems:items];
 }
 
@@ -150,8 +150,8 @@
 	[[self tableManagers] addObject:inProgress];
 
 	NSMutableArray *items = [NSMutableArray array];
-	[items addObject:[[TaskItem alloc] initWithName:@"More refactor"]];
-	[items addObject:[[TaskItem alloc] initWithName:@"You messed up again ;)"]];
+	[items addObject:[[TaskItem alloc] initWithName:@"More refactor" estimate:@0 toDo:@0]];
+	[items addObject:[[TaskItem alloc] initWithName:@"You messed up again ;)" estimate:@0 toDo:@0]];
 	[source setItems:items];
 }
 
@@ -173,6 +173,14 @@
 	CGFloat width = [mainView bounds].size.width / 2.0;
 	CGFloat height = [mainView bounds].size.height;
 	return CGSizeMake(width, height);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	// TODO: This is ugly and just temporary. Figure out the constraints.
+	NSLog(@"This is horrible didRotateFromInterfaceOrientation KanbanViewController");
+	[[[self definedTableManager] view] setFrame:[self getDefinedFrame]];
+	[[[self inProgressTableManager] view] setFrame:[self getInProgressFrame]];
 }
 
 - (void)didReceiveMemoryWarning

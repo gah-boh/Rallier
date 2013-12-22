@@ -31,9 +31,9 @@ SPEC_BEGIN(KanbanTableSourceSpec)
 			__block NSMutableArray *items;
 			beforeEach(^{
 				items = [NSMutableArray array];
-				[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up"]];
-				[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests"]];
-				[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit"]];
+				[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:nil toDo:nil ]];
+				[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:nil toDo:nil ]];
+				[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:nil toDo:nil ]];
 				[sut setItems:items];
 			});
 
@@ -48,7 +48,7 @@ SPEC_BEGIN(KanbanTableSourceSpec)
 			});
 
 			it(@"should delete the data from the given indexPath", ^{
-				[sut removeCell:nil path:0];
+				[sut removeCell:nil path:[NSIndexPath indexPathForRow:0 inSection:0]];
 				[[theValue([[sut items] count]) should] equal:theValue(2)];
 			});
 
@@ -67,9 +67,9 @@ SPEC_BEGIN(KanbanTableSourceSpec)
 			beforeEach(^{
 				taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
 				items = [NSMutableArray array];
-				[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up"]];
-				[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests"]];
-				[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit"]];
+				[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:@0 toDo:@0 ]];
+				[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:@0 toDo:@0 ]];
+				[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:@0 toDo:@0 ]];
 				[sut setItems:items];
 			});
 

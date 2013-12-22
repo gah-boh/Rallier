@@ -34,8 +34,21 @@
 	TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:taskCellIdentifier forIndexPath:indexPath];
 	[[self taskCellManager] manageCell:cell];
 	TaskItem *currentItem = [self itemForPosition:(int)[indexPath row]];
-	[[cell taskName] setText:[currentItem taskName]];
+	[self configureTaskCell:cell withTaskItem:currentItem];
 	return cell;
+}
+
+- (void)configureTaskCell:(TaskCell *)cell
+			 withTaskItem:(TaskItem *)taskItem
+{
+	[[cell taskName] setText:[taskItem taskName]];
+	[[cell estimate] setText:[self formatTaskNumber:[taskItem estimate]]];
+	[[cell toDo] setText:[self formatTaskNumber:[taskItem toDo]]];
+}
+
+- (NSString *)formatTaskNumber:(NSNumber *)number
+{
+	return [NSString stringWithFormat:@"%.2f", [number floatValue]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
