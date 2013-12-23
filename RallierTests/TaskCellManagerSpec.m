@@ -1,18 +1,33 @@
 #import "Kiwi.h"
 #import "TaskCellManager.h"
 
+@interface MockObserver : NSObject
+- (void)modelChanged:(UIView *)viewChanged;
+@end
+@implementation MockObserver
+- (void)modelChanged:(UIView *)viewChanged
+{}
+@end
+
 SPEC_BEGIN(TaskCellManagerSpec)
 
+NSString * const notificationName = @"testTasksCellManagerSpec";
+
 describe(@"Task Cell Manager", ^{
+
+	__block TaskCellManager *sut;
+
+	beforeEach(^{
+		sut = [[TaskCellManager alloc] initWithNotification:notificationName];
+	});
+
 	context(@"Adding a cell", ^{
 
-		__block TaskCellManager *sut;
 		__block id cellMock;
 		__block id estimateFieldMock;
 		__block id toDoFieldMock;
 
 		beforeEach(^{
-			sut = [[TaskCellManager alloc] init];
 			cellMock = [TaskCell nullMockWithName:@"TaskCell"];
 			estimateFieldMock = [UITextField nullMockWithName:@"estimateTextField"];
 			toDoFieldMock = [UITextField nullMockWithName:@"toDoTextFieldMock"];
@@ -61,6 +76,30 @@ describe(@"Task Cell Manager", ^{
 			[[theValue([[sut managedCells] count]) should] beLessThan:theValue(2)];
 		});
 
+	});
+
+	context(@"notifications", ^{
+
+		__block id mockReceiver;
+
+		beforeEach(^{
+			mockReceiver = [MockObserver nullMockWithName:@"mockReceiver"];
+			[mockReceiver stub:@selector(modelChanged:)];
+			[[NSNotificationCenter defaultCenter] addObserver:mockReceiver
+													 selector:@selector(modelChanged:)
+														 name:notificationName
+													   object:nil];
+		});
+
+		afterEach(^{
+			[[NSNotificationCenter defaultCenter] removeObserver:mockReceiver];
+		});
+
+		it(@"should post a notification given the string passed in the constructor", ^{
+			id mockTextField = [UITextField nullMockWithName:@"mockTestField"];
+			[[mockReceiver shouldEventually] receive:@selector(modelChanged:)];
+			[sut textFieldShouldReturn:mockTextField];
+		});
 	});
 });
 

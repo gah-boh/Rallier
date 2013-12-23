@@ -3,7 +3,9 @@
 #import "CellTransferHelper.h"
 #import "TaskItem.h"
 
-SPEC_BEGIN(KanbanManagerSpec)
+SPEC_BEGIN(KanbanTableManagerSpec)
+
+NSString * const notificationName = @"notifiationsForTestingKanbanTableManager";
 
 	describe(@"KanbanTableManager", ^{
 		__block KanbanTableManager *sut;
@@ -13,7 +15,7 @@ SPEC_BEGIN(KanbanManagerSpec)
 		beforeEach(^{
 			mockTableView = [UITableView nullMock];
 			mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
-			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
 		});
 
 		afterEach(^{
@@ -27,7 +29,7 @@ SPEC_BEGIN(KanbanManagerSpec)
 			beforeEach(^{
 				delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
 				sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
-				sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+				sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
 			});
 
 			it(@"should conform to the table view delegate protocol", ^{
@@ -52,7 +54,7 @@ SPEC_BEGIN(KanbanManagerSpec)
 
 			it(@"on initialization the table view should receive setRowHeight with the global variable value", ^{
 				[[mockTableView should] receive:@selector(setRowHeight:) withArguments:theValue(rowHeight)];
-				sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+				sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
 			});
 
 		});
@@ -91,6 +93,20 @@ SPEC_BEGIN(KanbanManagerSpec)
 				[sut newItemDragged:mockData];
 			});
 
+		});
+
+		context(@"Receiving Notifications", ^{
+			__block id mockObjectForNotification = [UIView nullMockWithName:@"mockObjectForNotification"];
+
+			beforeEach(^{
+				mockObjectForNotification = [UIView nullMockWithName:@"mockObjectForNotification"];
+			});
+
+			it(@"should receive modelChanged: for the notification", ^{
+				[[sut shouldEventually] receive:@selector(modelChanged:)];
+				[[NSNotificationCenter defaultCenter] postNotificationName:notificationName
+																	object:mockObjectForNotification];
+			});
 		});
 	});
 

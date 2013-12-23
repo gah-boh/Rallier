@@ -7,12 +7,25 @@
 
 
 @implementation TaskCellManager
+{
+	NSString *notificationName;
+}
 
 - (id)init
 {
+	@throw [NSException exceptionWithName:@"Wrong initializer"
+								   reason:@"Use initWithNotification:"
+								 userInfo:nil];
+}
+
+- (id)initWithNotification:(NSString *)stringForNotification
+{
+	NSParameterAssert(stringForNotification);
+
 	self = [super self];
 	if (self) {
 		_managedCells = [[NSMutableSet alloc] init];
+		notificationName = stringForNotification;
 	}
 	return self;
 }
@@ -37,6 +50,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	[textField resignFirstResponder];
+	[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:textField];
 	return YES;
 }
 

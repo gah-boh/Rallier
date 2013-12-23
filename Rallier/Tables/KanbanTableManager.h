@@ -19,7 +19,7 @@ extern CGFloat const rowHeight;
 @property (nonatomic) UITableView *view;
 @property (nonatomic) id <TaskItemSourceProtocol> dataSource;
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource;
+- (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource notificationName:(NSString *)nameForNotification;
 
 - (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point;
 

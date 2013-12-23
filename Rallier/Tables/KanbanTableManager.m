@@ -14,13 +14,17 @@ NSString * const taskCellIdentifier = @"TaskCell";
 
 CGFloat const rowHeight = 75.0;
 
+@interface KanbanTableManager ()
+@end
+
 @implementation KanbanTableManager
 {
+	NSString *notificationName;
 }
 
-- (id)initWithTableView:(UITableView *)tableView
-				 source:(id <TaskItemSourceProtocol>)dataSource
+- (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource notificationName:(NSString *)nameForNotification
 {
+	NSParameterAssert(nameForNotification);
 	self = [super init];
 	if (self) {
 		_view = tableView;
@@ -28,9 +32,24 @@ CGFloat const rowHeight = 75.0;
 		[self setUpCellReuseIdentifiers];
 		[_view setDelegate:self];
 		[_view setDataSource:dataSource];
+		notificationName = [nameForNotification copy];
 		[tableView setRowHeight:rowHeight];
+		[self registerForNotifications];
 	}
 	return self;
+}
+
+- (void)registerForNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(modelChanged:)
+												 name:notificationName
+											   object:nil];
+}
+
+- (void)modelChanged:(NSNotification *)notification
+{
+
 }
 
 - (void)setUpCellReuseIdentifiers
@@ -57,11 +76,6 @@ CGFloat const rowHeight = 75.0;
 	return [[self dataSource] tableView:[self view] cellForRowAtIndexPath:indexPath];
 }
 
-- (void)dealloc
-{
-	[_view setDelegate:nil];
-}
-
 - (void)removeCell:(UITableViewCell *)cell data:(NSIndexPath *)path
 {
 	[[self dataSource] removeCell:cell path:path];
@@ -72,4 +86,11 @@ CGFloat const rowHeight = 75.0;
 {
 	[[self dataSource] addData:item];
 }
+
+- (void)dealloc
+{
+	[_view setDelegate:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

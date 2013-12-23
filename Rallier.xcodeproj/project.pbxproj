@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0536A0AE185C09720085A16D /* KanbanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0536A0AD185C09720085A16D /* KanbanViewController.m */; };
 		0536A0B7185CB13B0085A16D /* KanbanTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0536A0B6185CB13B0085A16D /* KanbanTableManager.m */; };
-		0536A0B9185CB2460085A16D /* KanbanManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAEDBAB2F6E5F5A10064A /* KanbanManagerSpec.m */; };
+		0536A0B9185CB2460085A16D /* KanbanTableManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAEDBAB2F6E5F5A10064A /* KanbanTableManagerSpec.m */; };
 		0557FBB6185C08A1005C48AC /* KanbanViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */; };
 		05B8D0F0185C05DB00008F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0EF185C05DB00008F5A /* Foundation.framework */; };
 		05B8D0F2185C05DB00008F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0F1185C05DB00008F5A /* CoreGraphics.framework */; };
@@ -87,7 +87,7 @@
 		304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellTransferHelperSpec.m; sourceTree = "<group>"; };
 		304AAD5F6880A6879DED478B /* CellTransferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellTransferHelper.m; path = Tables/CellTransferHelper.m; sourceTree = "<group>"; };
 		304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragControllerSpec.m; sourceTree = "<group>"; };
-		304AAEDBAB2F6E5F5A10064A /* KanbanManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanManagerSpec.m; sourceTree = "<group>"; };
+		304AAEDBAB2F6E5F5A10064A /* KanbanTableManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanTableManagerSpec.m; sourceTree = "<group>"; };
 		304AAF2B25E43A601C08A100 /* CellTransferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellTransferHelper.h; path = Tables/CellTransferHelper.h; sourceTree = "<group>"; };
 		304AAF3CC3E1F3509AC76C55 /* KanbanTableSourceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanTableSourceSpec.m; sourceTree = "<group>"; };
 		934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RallierTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,7 +213,7 @@
 				05B8D10F185C05DB00008F5A /* Supporting Files */,
 				0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */,
 				304AA94948306D6C587C2DCF /* TaskItemSpec.m */,
-				304AAEDBAB2F6E5F5A10064A /* KanbanManagerSpec.m */,
+				304AAEDBAB2F6E5F5A10064A /* KanbanTableManagerSpec.m */,
 				304AAF3CC3E1F3509AC76C55 /* KanbanTableSourceSpec.m */,
 				304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */,
 				304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */,
@@ -411,7 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0557FBB6185C08A1005C48AC /* KanbanViewControllerSpec.m in Sources */,
-				0536A0B9185CB2460085A16D /* KanbanManagerSpec.m in Sources */,
+				0536A0B9185CB2460085A16D /* KanbanTableManagerSpec.m in Sources */,
 				304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */,
 				304AA02CCC2A0FD7EF2A0372 /* KanbanTableSourceSpec.m in Sources */,
 				304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */,

@@ -18,7 +18,7 @@
 @end
 
 @interface KanbanTableSource : NSObject <TaskItemSourceProtocol>
-@property(nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) TaskCellManager *taskCellManager;
 
 - (id)initWithCellManager:(TaskCellManager *)cellManager;

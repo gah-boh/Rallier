@@ -9,6 +9,9 @@
 #import "TaskCell.h"
 #import "TaskCellManager.h"
 
+@interface KanbanTableSource()
+@property (nonatomic, strong) NSString *notificationName;
+@end
 
 @implementation KanbanTableSource
 
@@ -71,6 +74,5 @@
 {
 	[[self items] addObject:taskItem];
 }
-
 
 @end

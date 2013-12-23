@@ -11,5 +11,7 @@
 
 @property (nonatomic, strong) NSMutableSet *managedCells;
 
+- (id)initWithNotification:(NSString *)stringForNotification;
+
 - (void)stopManagingCell:(UITableViewCell *)cell;
 @end

@@ -127,9 +127,10 @@
 {
 	// TODO: Need to create a factory.
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStylePlain];
-	TaskCellManager *taskCellManager = [[TaskCellManager alloc] init];
+	NSString *notificationName = @"definedTasks";
+	TaskCellManager *taskCellManager = [[TaskCellManager alloc] initWithNotification:notificationName];
 	KanbanTableSource *source = [[KanbanTableSource alloc] initWithCellManager:taskCellManager];
-	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
+	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source notificationName:notificationName];
 	[self setDefinedTableManager:definedManager];
 	[[self tableManagers] addObject:definedManager];
 
@@ -142,10 +143,12 @@
 
 - (void)createInProgressTableManager
 {
+	// TODO: This should be in a factory
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStylePlain];
-	TaskCellManager *taskCellManager = [[TaskCellManager alloc] init];
+	NSString *notificationName = @"inProgressTasks";
+	TaskCellManager *taskCellManager = [[TaskCellManager alloc] initWithNotification:notificationName];
 	KanbanTableSource *source = [[KanbanTableSource alloc] initWithCellManager:taskCellManager];
-	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
+	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source notificationName:notificationName];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];
 
