@@ -49,7 +49,11 @@ CGFloat const rowHeight = 75.0;
 
 - (void)modelChanged:(NSNotification *)notification
 {
-
+//	UIView *modifiedView = [notification object];
+//	CGPoint pointInTable = [modifiedView convertPoint:[modifiedView bounds].origin toView:[self view]];
+//	NSIndexPath *indexPath = [[self view] indexPathForRowAtPoint:pointInTable];
+	// TODO: Finish this
+	NSLog(@"Finish me");
 }
 
 - (void)setUpCellReuseIdentifiers

@@ -39,12 +39,17 @@ describe(@"Task Cell Manager", ^{
 			[[sut should] conformToProtocol:@protocol(TaskCellDelegate)];
 		});
 
+		it(@"when manageCell: is called the manager will set itself as the cells delegate", ^{
+			[[cellMock should] receive:@selector(setDelegate:) withArguments:sut];
+			[sut manageCell:cellMock];
+		});
+
 		it(@"when manageCell: is called the manager will set itself as the estimate field delegate", ^{
 			[[estimateFieldMock should] receive:@selector(setDelegate:) withArguments:sut];
 			[sut manageCell:cellMock];
 		});
 
-		it(@"when manageCell: is called the manager will set itself as the toDo field delegate", ^{
+		pending_(@"when manageCell: is called the manager will set itself as the toDo field delegate", ^{
 			[[toDoFieldMock should] receive:@selector(setDelegate:) withArguments:sut];
 			[sut manageCell:cellMock];
 		});
@@ -78,6 +83,12 @@ describe(@"Task Cell Manager", ^{
 
 	});
 
+	context(@"updating cells", ^{
+		pending_(@"-updateEstimated: should send notification with correct property value", ^{
+
+		});
+	});
+
 	context(@"notifications", ^{
 
 		__block id mockReceiver;
@@ -95,10 +106,11 @@ describe(@"Task Cell Manager", ^{
 			[[NSNotificationCenter defaultCenter] removeObserver:mockReceiver];
 		});
 
-		it(@"should post a notification given the string passed in the constructor", ^{
+		it(@"should post a notification for -updateEstimated:", ^{
 			id mockTextField = [UITextField nullMockWithName:@"mockTestField"];
+			[mockTextField stub:@selector(text) andReturn:@"testing"];
 			[[mockReceiver shouldEventually] receive:@selector(modelChanged:)];
-			[sut textFieldShouldReturn:mockTextField];
+			[sut updateEstimated:mockTextField];
 		});
 	});
 });

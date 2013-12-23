@@ -14,7 +14,6 @@
 
 - (void)removeCell:(UITableViewCell *)cell path:(NSIndexPath *)indexPath;
 - (void)addData:(TaskItem *)taskItem;
-
 @end
 
 @interface KanbanTableSource : NSObject <TaskItemSourceProtocol>
@@ -22,4 +21,5 @@
 @property (nonatomic, strong) TaskCellManager *taskCellManager;
 
 - (id)initWithCellManager:(TaskCellManager *)cellManager;
+
 @end

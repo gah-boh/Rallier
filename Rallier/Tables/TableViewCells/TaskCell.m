@@ -27,4 +27,10 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)estimateEditingEnded:(UITextField *)sender
+{
+	if ([self delegate]) {
+		[[self delegate] updateEstimated:sender];
+	}
+}
 @end
