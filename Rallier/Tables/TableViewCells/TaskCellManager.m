@@ -4,7 +4,6 @@
 //
 
 #import "TaskCellManager.h"
-#import "TaskItemUpdater.h"
 
 @implementation TaskCellManager
 {
@@ -37,16 +36,8 @@
 	}
 	[[self managedCells] addObject:taskCell];
 	[taskCell setDelegate:self];
-	[[taskCell estimate] setDelegate:self];
 }
 
-- (void)updateEstimated:(UITextField *)sender
-{
-	[sender resignFirstResponder];
-	NSDictionary *kvc = [NSDictionary dictionaryWithObject:[sender text] forKey:@"estimate"];
-	TaskItemUpdater *updater = [[TaskItemUpdater alloc] initWithKVC:kvc field:sender];
-	[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:updater];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -58,7 +49,6 @@
 {
 	[[self managedCells] removeObject:cell];
 	[(TaskCell *) cell setDelegate:nil];
-	[[(TaskCell *) cell estimate] setDelegate:nil];
 }
 
 @end

@@ -15,7 +15,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
+		[_estimate setDelegate:self];
     }
     return self;
 }
@@ -27,10 +27,10 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)estimateEditingEnded:(UITextField *)sender
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-	if ([self delegate]) {
-		[[self delegate] updateEstimated:sender];
-	}
+	[textField resignFirstResponder];
+	return YES;
 }
+
 @end

@@ -25,14 +25,11 @@ describe(@"Task Cell Manager", ^{
 
 		__block id cellMock;
 		__block id estimateFieldMock;
-		__block id toDoFieldMock;
 
 		beforeEach(^{
 			cellMock = [TaskCell nullMockWithName:@"TaskCell"];
 			estimateFieldMock = [UITextField nullMockWithName:@"estimateTextField"];
-			toDoFieldMock = [UITextField nullMockWithName:@"toDoTextFieldMock"];
 			[cellMock stub:@selector(estimate) andReturn:estimateFieldMock];
-			[cellMock stub:@selector(toDo) andReturn:toDoFieldMock];
 		});
 
 		it(@"TaskCellManager should conform to the TaskCellDelegateProtocol", ^{
@@ -42,21 +39,6 @@ describe(@"Task Cell Manager", ^{
 		it(@"when manageCell: is called the manager will set itself as the cells delegate", ^{
 			[[cellMock should] receive:@selector(setDelegate:) withArguments:sut];
 			[sut manageCell:cellMock];
-		});
-
-		it(@"when manageCell: is called the manager will set itself as the estimate field delegate", ^{
-			[[estimateFieldMock should] receive:@selector(setDelegate:) withArguments:sut];
-			[sut manageCell:cellMock];
-		});
-
-		pending_(@"when manageCell: is called the manager will set itself as the toDo field delegate", ^{
-			[[toDoFieldMock should] receive:@selector(setDelegate:) withArguments:sut];
-			[sut manageCell:cellMock];
-		});
-
-		it(@"textFieldShouldReturn: should tell the text field to resign first responder", ^{
-			[[toDoFieldMock should] receive:@selector(resignFirstResponder)];
-			[sut textFieldShouldReturn:toDoFieldMock];
 		});
 
 		it(@"will not add the same cell twice", ^{
@@ -83,12 +65,6 @@ describe(@"Task Cell Manager", ^{
 
 	});
 
-	context(@"updating cells", ^{
-		pending_(@"-updateEstimated: should send notification with correct property value", ^{
-
-		});
-	});
-
 	context(@"notifications", ^{
 
 		__block id mockReceiver;
@@ -106,11 +82,10 @@ describe(@"Task Cell Manager", ^{
 			[[NSNotificationCenter defaultCenter] removeObserver:mockReceiver];
 		});
 
-		it(@"should post a notification for -updateEstimated:", ^{
-			id mockTextField = [UITextField nullMockWithName:@"mockTestField"];
-			[mockTextField stub:@selector(text) andReturn:@"testing"];
-			[[mockReceiver shouldEventually] receive:@selector(modelChanged:)];
-			[sut updateEstimated:mockTextField];
+		pending_(@"should post a notification for -updateEstimated:", ^{
+			// Right now I was thinking to use a notification and key value coding. I'm second
+			// guessing myself and maybe should get the cell that's being edited on
+			// and update it.
 		});
 	});
 });

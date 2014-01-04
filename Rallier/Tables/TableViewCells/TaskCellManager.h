@@ -13,5 +13,8 @@
 
 - (id)initWithNotification:(NSString *)stringForNotification;
 
+- (void)manageCell:(TaskCell *)taskCell;
+
 - (void)stopManagingCell:(UITableViewCell *)cell;
+
 @end
