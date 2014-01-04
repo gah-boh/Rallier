@@ -29,8 +29,9 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+	NSIndexPath *fieldIndexPath = [self decypherTag:[textField tag]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:[self notificationName]
-														object:textField];
+														object:fieldIndexPath];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -67,7 +68,7 @@
 	return [NSString stringWithFormat:@"%.2f", [number floatValue]];
 }
 
-- (NSIndexPath *)decypherTag:(NSInteger)tag
+- (NSIndexPath *)decypherTag:(int)tag
 {
 	NSString *formatted = [NSString stringWithFormat:@"%.3f", tag / 1000.0];
 	NSArray *separated = [formatted componentsSeparatedByString:@"."];

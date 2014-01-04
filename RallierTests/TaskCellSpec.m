@@ -140,14 +140,18 @@ describe(@"Task Cell", ^{
 	context(@"Done editing", ^{
 
 		__block id observerMock;
+		__block id textFieldMock;
+		__block KWCaptureSpy *spy;
 
 		beforeEach(^{
 			[sut setNotificationName:notificationName];
+			textFieldMock = [UITextField nullMockWithName:@"textFieldMock"];
 			observerMock = [MockObserver nullMockWithName:@"observerMock"];
 			[[NSNotificationCenter defaultCenter] addObserver:observerMock
 													 selector:@selector(receiverStub:)
 														 name:notificationName
 													   object:nil];
+			spy = [observerMock captureArgument:@selector(receiverStub:) atIndex:0];
 		});
 
 		afterEach(^{
@@ -155,15 +159,22 @@ describe(@"Task Cell", ^{
 		});
 
 		it(@"-textFieldDidEndEditing: should send a notification with correct name", ^{
-			id textFieldMock = [UITextField nullMockWithName:@"textFieldMock"];
 			[[observerMock should] receive:@selector(receiverStub:)];
 			[sut textFieldDidEndEditing:textFieldMock];
 		});
 
-		pending(@"-textFieldDidEndEditing: should send the correct index path from its tag with the notification", ^{
-			id textFieldMock = [UITextField nullMockWithName:@"textFieldMock"];
+		it(@"-textFieldDidEndEditing: should send the correct index path section from its tag with the notification", ^{
 			[textFieldMock stub:@selector(tag) andReturn:theValue(1002)];
+			[sut textFieldDidEndEditing:textFieldMock];
+			NSIndexPath *expected = [[spy argument] object];
+			[[theValue([expected section]) should] equal:theValue(1)];
+		});
 
+		it(@"-textFieldDidEndEditing: should send the correct index path row from its tag with the notification", ^{
+			[textFieldMock stub:@selector(tag) andReturn:theValue(1002)];
+			[sut textFieldDidEndEditing:textFieldMock];
+			NSIndexPath *expected = [[spy argument] object];
+			[[theValue([expected row]) should] equal:theValue(2)];
 		});
 
 	});
