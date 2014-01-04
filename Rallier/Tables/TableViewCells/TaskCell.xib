@@ -26,7 +26,7 @@
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         <connections>
-                            <action selector="estimateEditingEnded:" destination="Jh1-VI-b3g" eventType="editingDidEnd" id="hRC-9d-kEy"/>
+                            <outlet property="delegate" destination="Jh1-VI-b3g" id="RhC-3d-s9c"/>
                         </connections>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cDt-Bx-aX4" userLabel="Round Style Text Field - ToDo">
@@ -34,6 +34,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        <connections>
+                            <outlet property="delegate" destination="Jh1-VI-b3g" id="ZgF-Ud-zfQ"/>
+                        </connections>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvd-ec-5vb">
                         <rect key="frame" x="5" y="7" width="60" height="60"/>

@@ -7,7 +7,7 @@
 
 @class TaskItem;
 
-@protocol TaskItemSourceProtocol <UITableViewDataSource>
+@protocol KanbanTableViewDataSource <UITableViewDataSource>
 
 - (TaskItem *)itemForPosition:(int)position;
 
@@ -15,8 +15,9 @@
 - (void)addData:(TaskItem *)taskItem;
 @end
 
-@interface KanbanTableSource : NSObject <TaskItemSourceProtocol>
+@interface KanbanTableSource : NSObject <KanbanTableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *items;
 
+- (id)initWithNotificationName:(NSString *)notification;
 
 @end

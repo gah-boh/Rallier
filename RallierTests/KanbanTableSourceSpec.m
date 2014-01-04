@@ -1,15 +1,17 @@
 #import "Kiwi.h"
 #import "KanbanTableSource.h"
 #import "TaskItem.h"
+#import "TaskCell.h"
 
 SPEC_BEGIN(KanbanTableSourceSpec)
 
+NSString * const notificationName = @"KanbanTableSourceSpec";
 
 describe(@"Defined Task Item Source", ^{
 	__block KanbanTableSource *sut;
 
 	beforeEach(^{
-		sut = [[KanbanTableSource alloc] init];
+		sut = [[KanbanTableSource alloc] initWithNotificationName:notificationName];
 	});
 
 	afterEach(^{
@@ -17,12 +19,11 @@ describe(@"Defined Task Item Source", ^{
 	});
 
 	context(@"construction", ^{
+
 		it(@"should conform to UITableViewDataSourceProtocol", ^{
 			[[sut should] conformToProtocol:@protocol(UITableViewDataSource)];
 		});
 
-		it(@"should have the cellManager property defined", ^{
-		});
 	});
 
 	context(@"items", ^{
@@ -57,17 +58,25 @@ describe(@"Defined Task Item Source", ^{
 		});
 	});
 
-	context(@"Getting cells", ^{
+	context(@"cells", ^{
 
 		__block NSMutableArray *items;
 		__block id taskCellMock;
 
 		beforeEach(^{
+			taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
 			items = [NSMutableArray array];
 			[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:@0 toDo:@0 ]];
 			[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:@0 toDo:@0 ]];
 			[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:@0 toDo:@0 ]];
 			[sut setItems:items];
+		});
+
+		it(@"should tell the cell to configure itself", ^{
+			id tableViewMock = [UITableView nullMockWithName:@"tableViewMock"];
+			[tableViewMock stub:@selector(dequeueReusableCellWithIdentifier:forIndexPath:) andReturn:taskCellMock];
+			[[taskCellMock should] receive:@selector(configureWithTaskItem:indexPath:notificationName:)];
+			[sut tableView:tableViewMock cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 		});
 
 	});

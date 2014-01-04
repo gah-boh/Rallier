@@ -14,7 +14,7 @@ describe(@"KanbanTableManager", ^{
 
 	beforeEach(^{
 		mockTableView = [UITableView nullMock];
-		mockDataSource = [KWMock mockForProtocol:@protocol(TaskItemSourceProtocol)];
+		mockDataSource = [KWMock mockForProtocol:@protocol(KanbanTableViewDataSource)];
 		sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
 	});
 

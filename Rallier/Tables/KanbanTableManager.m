@@ -22,7 +22,7 @@ CGFloat const rowHeight = 75.0;
 	NSString *notificationName;
 }
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource notificationName:(NSString *)nameForNotification
+- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource notificationName:(NSString *)nameForNotification
 {
 	NSParameterAssert(nameForNotification);
 	self = [super init];
@@ -52,7 +52,7 @@ CGFloat const rowHeight = 75.0;
 //	UIView *modifiedView = [notification object];
 //	CGPoint pointInTable = [modifiedView convertPoint:[modifiedView bounds].origin toView:[self view]];
 //	NSIndexPath *indexPath = [[self view] indexPathForRowAtPoint:pointInTable];
-	// TODO: Finish this
+	// TODO: Finish this, this will recieve the point and then update the cell
 	NSLog(@"Finish me");
 }
 

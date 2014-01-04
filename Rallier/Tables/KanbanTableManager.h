@@ -17,9 +17,9 @@ extern CGFloat const rowHeight;
 @interface KanbanTableManager : NSObject <UITableViewDelegate>
 
 @property (nonatomic) UITableView *view;
-@property (nonatomic) id <TaskItemSourceProtocol> dataSource;
+@property (nonatomic) id <KanbanTableViewDataSource> dataSource;
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource notificationName:(NSString *)nameForNotification;
+- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource notificationName:(NSString *)nameForNotification;
 
 - (void)modelChanged:(NSNotification *)notification;
 

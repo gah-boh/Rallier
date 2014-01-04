@@ -9,16 +9,27 @@
 #import "TaskCell.h"
 
 @interface KanbanTableSource()
-@property (nonatomic, strong) NSString *notificationName;
 @end
 
 @implementation KanbanTableSource
+{
+	NSString *notificationName;
+}
 
 - (id)init
 {
+	@throw [NSException exceptionWithName:@"wrong initializer"
+								   reason:@"use initWithNotificationName:"
+								 userInfo:nil];
+}
+
+- (id)initWithNotificationName:(NSString*)notification
+{
+	NSParameterAssert(notification);
 	self = [super init];
 	if (self) {
 		_items = [NSMutableArray array];
+		notificationName = [notification copy];
 	}
 	return self;
 }
@@ -27,22 +38,10 @@
 {
 	TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:taskCellIdentifier forIndexPath:indexPath];
 	TaskItem *currentItem = [self itemForPosition:(int)[indexPath row]];
-	[self configureTaskCell:cell withTaskItem:currentItem];
+	[cell configureWithTaskItem:currentItem indexPath:indexPath notificationName:notificationName];
 	return cell;
 }
 
-- (void)configureTaskCell:(TaskCell *)cell
-			 withTaskItem:(TaskItem *)taskItem
-{
-	[[cell taskName] setText:[taskItem taskName]];
-	[[cell estimate] setText:[self formatTaskNumber:[taskItem estimate]]];
-	[[cell toDo] setText:[self formatTaskNumber:[taskItem toDo]]];
-}
-
-- (NSString *)formatTaskNumber:(NSNumber *)number
-{
-	return [NSString stringWithFormat:@"%.2f", [number floatValue]];
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
