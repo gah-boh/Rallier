@@ -1,18 +1,15 @@
 #import "Kiwi.h"
 #import "KanbanTableSource.h"
 #import "TaskItem.h"
-#import "TaskCellManager.h"
 
 SPEC_BEGIN(KanbanTableSourceSpec)
 
 
 describe(@"Defined Task Item Source", ^{
 	__block KanbanTableSource *sut;
-	__block id taskCellManagerMock;
 
 	beforeEach(^{
-		taskCellManagerMock = [TaskCellManager nullMockWithName:@"TaskCellManagerMock"];
-		sut = [[KanbanTableSource alloc] initWithCellManager:taskCellManagerMock];
+		sut = [[KanbanTableSource alloc] init];
 	});
 
 	afterEach(^{
@@ -25,7 +22,6 @@ describe(@"Defined Task Item Source", ^{
 		});
 
 		it(@"should have the cellManager property defined", ^{
-			[[sut taskCellManager] shouldNotBeNil];
 		});
 	});
 
@@ -67,24 +63,11 @@ describe(@"Defined Task Item Source", ^{
 		__block id taskCellMock;
 
 		beforeEach(^{
-			taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
 			items = [NSMutableArray array];
 			[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:@0 toDo:@0 ]];
 			[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:@0 toDo:@0 ]];
 			[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:@0 toDo:@0 ]];
 			[sut setItems:items];
-		});
-
-		it(@"should add the cell to the manager", ^{
-			id tableViewMock = [UITableView nullMockWithName:@"tableViewMock"];
-			[tableViewMock stub:@selector(dequeueReusableCellWithIdentifier:forIndexPath:) andReturn:taskCellMock];
-			[[taskCellManagerMock should] receive:@selector(manageCell:) withArguments:taskCellMock];
-			[sut tableView:tableViewMock cellForRowAtIndexPath:nil];
-		});
-
-		it(@"removeCell:path should tell the taskCellManager to stopManaging: the cell", ^{
-			[[taskCellManagerMock should] receive:@selector(stopManagingCell:)];
-			[sut removeCell:taskCellMock path:nil];
 		});
 
 	});

@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 
 @class TaskItem;
-@class TaskCellManager;
 
 @protocol TaskItemSourceProtocol <UITableViewDataSource>
 
@@ -18,8 +17,6 @@
 
 @interface KanbanTableSource : NSObject <TaskItemSourceProtocol>
 @property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, strong) TaskCellManager *taskCellManager;
 
-- (id)initWithCellManager:(TaskCellManager *)cellManager;
 
 @end

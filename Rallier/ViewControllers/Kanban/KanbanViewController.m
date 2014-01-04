@@ -11,7 +11,6 @@
 #import "TaskItem.h"
 #import "CellTransferHelper.h"
 #import "DragController.h"
-#import "TaskCellManager.h"
 
 @interface KanbanViewController ()
 
@@ -128,8 +127,7 @@
 	// TODO: Need to create a factory.
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStylePlain];
 	NSString *notificationName = @"definedTasks";
-	TaskCellManager *taskCellManager = [[TaskCellManager alloc] initWithNotification:notificationName];
-	KanbanTableSource *source = [[KanbanTableSource alloc] initWithCellManager:taskCellManager];
+	KanbanTableSource *source = [[KanbanTableSource alloc] init];
 	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source notificationName:notificationName];
 	[self setDefinedTableManager:definedManager];
 	[[self tableManagers] addObject:definedManager];
@@ -146,8 +144,7 @@
 	// TODO: This should be in a factory
 	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStylePlain];
 	NSString *notificationName = @"inProgressTasks";
-	TaskCellManager *taskCellManager = [[TaskCellManager alloc] initWithNotification:notificationName];
-	KanbanTableSource *source = [[KanbanTableSource alloc] initWithCellManager:taskCellManager];
+	KanbanTableSource *source = [[KanbanTableSource alloc] init];
 	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source notificationName:notificationName];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];

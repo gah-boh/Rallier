@@ -21,6 +21,8 @@ extern CGFloat const rowHeight;
 
 - (id)initWithTableView:(UITableView *)tableView source:(id <TaskItemSourceProtocol>)dataSource notificationName:(NSString *)nameForNotification;
 
+- (void)modelChanged:(NSNotification *)notification;
+
 - (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point;
 
 - (UITableViewCell *)cellForIndexPath:(NSIndexPath *)indexPath;

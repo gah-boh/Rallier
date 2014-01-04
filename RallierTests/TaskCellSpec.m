@@ -27,8 +27,8 @@ describe(@"Task Cell", ^{
 	});
 
 	pending_(@"should be the estimate fields delegate", ^{
-		UITextField *estimate = [sut estimate];
-		[[[estimate delegate] should] equal:sut];
+//		UITextField *estimate = [sut estimate];
+//		[[[estimate delegate] should] equal:sut];
 	});
 
 	pending_(@"Task Cell should be the toDo field's delegate", ^{
