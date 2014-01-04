@@ -19,9 +19,7 @@ extern CGFloat const rowHeight;
 @property (nonatomic) UITableView *view;
 @property (nonatomic) id <KanbanTableViewDataSource> dataSource;
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource notificationName:(NSString *)nameForNotification;
-
-- (void)modelChanged:(NSNotification *)notification;
+- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource;
 
 - (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point;
 
@@ -30,4 +28,5 @@ extern CGFloat const rowHeight;
 - (void)removeCell:(UITableViewCell *)cell data:(NSIndexPath *)path;
 
 - (void)newItemDragged:(TaskItem *)item;
+
 @end

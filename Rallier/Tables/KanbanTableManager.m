@@ -19,12 +19,10 @@ CGFloat const rowHeight = 75.0;
 
 @implementation KanbanTableManager
 {
-	NSString *notificationName;
 }
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource notificationName:(NSString *)nameForNotification
+- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource
 {
-	NSParameterAssert(nameForNotification);
 	self = [super init];
 	if (self) {
 		_view = tableView;
@@ -32,28 +30,9 @@ CGFloat const rowHeight = 75.0;
 		[self setUpCellReuseIdentifiers];
 		[_view setDelegate:self];
 		[_view setDataSource:dataSource];
-		notificationName = [nameForNotification copy];
 		[tableView setRowHeight:rowHeight];
-		[self registerForNotifications];
 	}
 	return self;
-}
-
-- (void)registerForNotifications
-{
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(modelChanged:)
-												 name:notificationName
-											   object:nil];
-}
-
-- (void)modelChanged:(NSNotification *)notification
-{
-//	UIView *modifiedView = [notification object];
-//	CGPoint pointInTable = [modifiedView convertPoint:[modifiedView bounds].origin toView:[self view]];
-//	NSIndexPath *indexPath = [[self view] indexPathForRowAtPoint:pointInTable];
-	// TODO: Finish this, this will recieve the point and then update the cell
-	NSLog(@"Finish me");
 }
 
 - (void)setUpCellReuseIdentifiers

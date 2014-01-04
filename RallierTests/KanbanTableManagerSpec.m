@@ -5,8 +5,6 @@
 
 SPEC_BEGIN(KanbanTableManagerSpec)
 
-NSString * const notificationName = @"notifiationsForTestingKanbanTableManager";
-
 describe(@"KanbanTableManager", ^{
 	__block KanbanTableManager *sut;
 	__block id mockTableView;
@@ -15,7 +13,7 @@ describe(@"KanbanTableManager", ^{
 	beforeEach(^{
 		mockTableView = [UITableView nullMock];
 		mockDataSource = [KWMock mockForProtocol:@protocol(KanbanTableViewDataSource)];
-		sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
+		sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 	});
 
 	afterEach(^{
@@ -29,7 +27,7 @@ describe(@"KanbanTableManager", ^{
 		beforeEach(^{
 			delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
 			sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
-			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
+			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 		});
 
 		it(@"should conform to the table view delegate protocol", ^{
@@ -54,7 +52,7 @@ describe(@"KanbanTableManager", ^{
 
 		it(@"on initialization the table view should receive setRowHeight with the global variable value", ^{
 			[[mockTableView should] receive:@selector(setRowHeight:) withArguments:theValue(rowHeight)];
-			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource notificationName:notificationName];
+			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
 		});
 
 	});
@@ -95,19 +93,6 @@ describe(@"KanbanTableManager", ^{
 
 	});
 
-	context(@"Receiving Notifications", ^{
-		__block id mockObjectForNotification = [UIView nullMockWithName:@"mockObjectForNotification"];
-
-		beforeEach(^{
-			mockObjectForNotification = [UIView nullMockWithName:@"mockObjectForNotification"];
-		});
-
-		it(@"should receive modelChanged: for the notification", ^{
-			[[sut shouldEventually] receive:@selector(modelChanged:)];
-			[[NSNotificationCenter defaultCenter] postNotificationName:notificationName
-																object:mockObjectForNotification];
-		});
-	});
 });
 
 SPEC_END
