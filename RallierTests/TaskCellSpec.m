@@ -34,7 +34,6 @@ describe(@"Task Cell", ^{
 
 	context(@"Configuration", ^{
 		__block TaskItem *taskItem;
-		__block NSIndexPath *indexPath;
 
 		beforeEach(^{
 			[sut setTaskName:taskNameMock];
@@ -43,7 +42,6 @@ describe(@"Task Cell", ^{
 			taskItem = [[TaskItem alloc] initWithName:@"test name"
 											 estimate:@4
 												 toDo:@2];
-			indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 		});
 
 		void (^configureSUT)(void) = ^{
