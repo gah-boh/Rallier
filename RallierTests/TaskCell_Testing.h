@@ -10,5 +10,6 @@
 
 @interface TaskCell (Testing)
 
+- (NSNumber *)convertNumericFieldText:(NSString *)textLabel;
 
 @end

@@ -46,6 +46,13 @@
 	[[self taskItem] setToDo:[NSNumber numberWithFloat:toDo]];
 }
 
+- (NSNumber *)convertNumericFieldText:(NSString *)text
+{
+	NSString *strippedString = [text stringByReplacingOccurrencesOfString:@"[^0-9\\.]" withString:@"" options:NSRegularExpressionSearch
+																	range:NSMakeRange(0, [text length])];
+	return [NSNumber numberWithFloat:[strippedString floatValue]];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	[textField resignFirstResponder];

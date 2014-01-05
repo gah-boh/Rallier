@@ -1,6 +1,7 @@
 #import "Kiwi.h"
 #import "TaskCell.h"
 #import "TaskItem.h"
+#import "TaskCell_Testing.h"
 
 SPEC_BEGIN(TaskCellSpec)
 
@@ -71,6 +72,22 @@ describe(@"Task Cell", ^{
 		});
 
 		context(@"Done editing", ^{
+
+			it(@"should strip any non numerical characters", ^{
+				NSString *wrongInput = @"0.a2b5";
+				NSNumber *expected = [sut convertNumericFieldText:wrongInput];
+				[[theValue([expected floatValue]) should] equal:theValue(0.25)];
+			});
+
+			it(@"should strip any non numerical characters part 2", ^{
+				NSString *wrongInput = @"1.a5b6";
+				float expected = [[sut convertNumericFieldText:wrongInput] floatValue];
+				[[theValue(expected) should] equal:theValue(1.56)];
+			});
+
+			pending(@"should raise a warning if non numerical characters were entered", ^{
+
+			});
 
 			it(@"-textFieldDidEndEditing: should change the estimate on the taskItem", ^{
 				[estimateFieldMock stub:@selector(text) andReturn:@"2.50"];

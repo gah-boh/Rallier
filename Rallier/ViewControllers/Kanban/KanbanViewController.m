@@ -120,12 +120,13 @@
 	[dragController dragEndedAt:[self findTouchedTableManager:gr]];
 	[[[self definedTableManager] view] reloadData];
 	[[[self inProgressTableManager] view] reloadData];
+	dragController = nil;
 }
 
 - (void)createDefinedTableManager
 {
 	// TODO: Need to create a factory.
-	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStylePlain];
+	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStyleGrouped];
 	KanbanTableSource *source = [[KanbanTableSource alloc] init];
 	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
 	[self setDefinedTableManager:definedManager];
@@ -141,7 +142,7 @@
 - (void)createInProgressTableManager
 {
 	// TODO: This should be in a factory
-	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStylePlain];
+	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStyleGrouped];
 	KanbanTableSource *source = [[KanbanTableSource alloc] init];
 	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
 	[self setInProgressTableManager:inProgress];
