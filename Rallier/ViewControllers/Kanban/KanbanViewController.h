@@ -15,6 +15,7 @@
 
 @property (nonatomic) KanbanTableManager *definedTableManager;
 @property (nonatomic) KanbanTableManager *inProgressTableManager;
+@property (nonatomic) KanbanTableManager *completedTableManager;
 @property (nonatomic) NSMutableArray *tableManagers;
 
 @end

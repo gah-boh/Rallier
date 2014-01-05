@@ -44,6 +44,7 @@
 
 	[self createDefinedTableManager];
 	[self createInProgressTableManager];
+	[self createCompletedTableManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,9 +53,11 @@
 
 	[[self view] addSubview:[[self definedTableManager] view]];
 	[[self view] addSubview:[[self inProgressTableManager] view]];
+	[[self view] addSubview:[[self completedTableManager] view]];
 
 	[[[self definedTableManager] view] reloadData];
 	[[[self inProgressTableManager] view] reloadData];
+	[[[self completedTableManager] view] reloadData];
 
 	[self registerGestureRecognizers];
 }
@@ -121,6 +124,7 @@
 	[dragController dragEndedAt:[self findTouchedTableManager:gr]];
 	[[[self definedTableManager] view] reloadData];
 	[[[self inProgressTableManager] view] reloadData];
+	[[[self completedTableManager] view] reloadData];
 	dragController = nil;
 }
 
@@ -149,6 +153,13 @@
 	[[inProgress dataSource] setItems:items];
 }
 
+- (void)createCompletedTableManager
+{
+	KanbanTableManager *completedManager = [KanbanTableFactory createKanbanTableManager:[self getCompletedFrame]];
+	[self setCompletedTableManager:completedManager];
+	[[self tableManagers] addObject:completedManager];
+}
+
 - (CGRect)getInProgressFrame
 {
 	CGSize size = [self getTableSize];
@@ -161,10 +172,17 @@
 	return CGRectMake(0, 0, size.width, size.height);
 }
 
+- (CGRect)getCompletedFrame
+{
+	CGSize size = [self getTableSize];
+	return CGRectMake(size.width * 2, 0, size.width, size.height);
+}
+
+
 - (CGSize)getTableSize
 {
 	UIView *mainView = [self view];
-	CGFloat width = [mainView bounds].size.width / 2.0;
+	CGFloat width = [mainView bounds].size.width / 3.0;
 	CGFloat height = [mainView bounds].size.height;
 	return CGSizeMake(width, height);
 }
@@ -175,6 +193,7 @@
 	NSLog(@"This is horrible didRotateFromInterfaceOrientation KanbanViewController");
 	[[[self definedTableManager] view] setFrame:[self getDefinedFrame]];
 	[[[self inProgressTableManager] view] setFrame:[self getInProgressFrame]];
+	[[[self completedTableManager] view] setFrame:[self getCompletedFrame]];
 }
 
 - (void)didReceiveMemoryWarning
