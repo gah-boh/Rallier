@@ -28,6 +28,7 @@
 		304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */; };
 		304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */; };
 		304AA23B23A8939E7923CF5F /* TaskItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA94948306D6C587C2DCF /* TaskItemSpec.m */; };
+		304AA28D9193A7C614B09F6E /* KanbanTableFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAF0BAC4378E3575C510A /* KanbanTableFactory.m */; };
 		304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */; };
 		304AA7E5D51FF06495F02D23 /* KanbanTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA8DD88AB9347F941B093 /* KanbanTableSource.m */; };
 		304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA52CFCF951CC01DCEED6 /* DragController.m */; };
@@ -73,6 +74,7 @@
 		05C4C51718661A9100A3DFC9 /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell.h; path = Tables/TableViewCells/TaskCell.h; sourceTree = "<group>"; };
 		05C4C51818661A9100A3DFC9 /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskCell.m; path = Tables/TableViewCells/TaskCell.m; sourceTree = "<group>"; };
 		098A8C046697414A81846C7F /* Pods-RallierTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RallierTests.xcconfig"; path = "Pods/Pods-RallierTests.xcconfig"; sourceTree = "<group>"; };
+		304AA09C48A542E2CF5D55FF /* KanbanTableFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KanbanTableFactory.h; path = Tables/KanbanTableFactory.h; sourceTree = "<group>"; };
 		304AA1247D8841EFB6CD183B /* TaskCellSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCellSpec.m; sourceTree = "<group>"; };
 		304AA2A13305A29D905FE29D /* DragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DragController.h; path = Controllers/DragController.h; sourceTree = "<group>"; };
 		304AA3D68BDD9E0102E62407 /* TaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskItem.h; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		304AAD5F6880A6879DED478B /* CellTransferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellTransferHelper.m; path = Tables/CellTransferHelper.m; sourceTree = "<group>"; };
 		304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragControllerSpec.m; sourceTree = "<group>"; };
 		304AAEDBAB2F6E5F5A10064A /* KanbanTableManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanTableManagerSpec.m; sourceTree = "<group>"; };
+		304AAF0BAC4378E3575C510A /* KanbanTableFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KanbanTableFactory.m; path = Tables/KanbanTableFactory.m; sourceTree = "<group>"; };
 		304AAF2B25E43A601C08A100 /* CellTransferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellTransferHelper.h; path = Tables/CellTransferHelper.h; sourceTree = "<group>"; };
 		304AAF3CC3E1F3509AC76C55 /* KanbanTableSourceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanTableSourceSpec.m; sourceTree = "<group>"; };
 		934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RallierTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +145,8 @@
 				304AA6A6017F62E4189BA717 /* KanbanTableSource.h */,
 				304AAF2B25E43A601C08A100 /* CellTransferHelper.h */,
 				304AAD5F6880A6879DED478B /* CellTransferHelper.m */,
+				304AAF0BAC4378E3575C510A /* KanbanTableFactory.m */,
+				304AA09C48A542E2CF5D55FF /* KanbanTableFactory.h */,
 			);
 			name = Tables;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				05C4C51918661A9100A3DFC9 /* TaskCell.m in Sources */,
 				304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */,
 				304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */,
+				304AA28D9193A7C614B09F6E /* KanbanTableFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

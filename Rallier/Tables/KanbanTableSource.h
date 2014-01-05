@@ -13,6 +13,7 @@
 
 - (void)removeCell:(UITableViewCell *)cell path:(NSIndexPath *)indexPath;
 - (void)addData:(TaskItem *)taskItem;
+@property (nonatomic, strong) NSMutableArray *items;
 @end
 
 @interface KanbanTableSource : NSObject <KanbanTableViewDataSource>

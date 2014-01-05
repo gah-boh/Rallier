@@ -11,6 +11,7 @@
 #import "TaskItem.h"
 #import "CellTransferHelper.h"
 #import "DragController.h"
+#import "KanbanTableFactory.h"
 
 @interface KanbanViewController ()
 
@@ -125,10 +126,7 @@
 
 - (void)createDefinedTableManager
 {
-	// TODO: Need to create a factory.
-	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getDefinedFrame] style:UITableViewStyleGrouped];
-	KanbanTableSource *source = [[KanbanTableSource alloc] init];
-	KanbanTableManager *definedManager = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
+	KanbanTableManager *definedManager = [KanbanTableFactory createKanbanTableManager:[self getDefinedFrame]];
 	[self setDefinedTableManager:definedManager];
 	[[self tableManagers] addObject:definedManager];
 
@@ -136,22 +134,19 @@
 	[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:@0 toDo:@0]];
 	[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:@0 toDo:@0]];
 	[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:@0 toDo:@0]];
-	[source setItems:items];
+	[[definedManager dataSource] setItems:items];
 }
 
 - (void)createInProgressTableManager
 {
-	// TODO: This should be in a factory
-	UITableView *tableView = [[UITableView alloc] initWithFrame:[self getInProgressFrame] style:UITableViewStyleGrouped];
-	KanbanTableSource *source = [[KanbanTableSource alloc] init];
-	KanbanTableManager *inProgress = [[KanbanTableManager alloc] initWithTableView:tableView source:source];
+	KanbanTableManager *inProgress = [KanbanTableFactory createKanbanTableManager:[self getInProgressFrame]];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];
 
 	NSMutableArray *items = [NSMutableArray array];
 	[items addObject:[[TaskItem alloc] initWithName:@"More refactor" estimate:@0 toDo:@0]];
 	[items addObject:[[TaskItem alloc] initWithName:@"You messed up again ;)" estimate:@0 toDo:@0]];
-	[source setItems:items];
+	[[inProgress dataSource] setItems:items];
 }
 
 - (CGRect)getInProgressFrame
