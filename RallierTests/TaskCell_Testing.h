@@ -12,5 +12,4 @@
 
 - (NSInteger)calculateTagWithSection:(NSInteger)section row:(NSInteger)row;
 
-- (NSIndexPath *)decypherTag:(int)tag;
 @end

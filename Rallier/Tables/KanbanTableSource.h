@@ -16,6 +16,7 @@
 @end
 
 @interface KanbanTableSource : NSObject <KanbanTableViewDataSource>
+
 @property (nonatomic, strong) NSMutableArray *items;
 
 - (id)initWithNotificationName:(NSString *)notification;

@@ -53,6 +53,7 @@
 		0536A0B6185CB13B0085A16D /* KanbanTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KanbanTableManager.m; path = Tables/KanbanTableManager.m; sourceTree = "<group>"; };
 		0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanViewControllerSpec.m; sourceTree = "<group>"; };
 		059C64F71878C1F100446C66 /* TaskCell_Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell_Testing.h; path = RallierTests/TaskCell_Testing.h; sourceTree = SOURCE_ROOT; };
+		059C64F81878E21C00446C66 /* KanbanTableSource_Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanTableSource_Testing.h; sourceTree = "<group>"; };
 		05B8D0EC185C05DB00008F5A /* Rallier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rallier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B8D0EF185C05DB00008F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05B8D0F1185C05DB00008F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,6 +211,7 @@
 				0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */,
 				304AA94948306D6C587C2DCF /* TaskItemSpec.m */,
 				059C64F71878C1F100446C66 /* TaskCell_Testing.h */,
+				059C64F81878E21C00446C66 /* KanbanTableSource_Testing.h */,
 				304AAEDBAB2F6E5F5A10064A /* KanbanTableManagerSpec.m */,
 				304AAF3CC3E1F3509AC76C55 /* KanbanTableSourceSpec.m */,
 				304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */,

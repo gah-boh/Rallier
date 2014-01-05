@@ -113,30 +113,6 @@ describe(@"Task Cell", ^{
 
 	});
 
-	context(@"decyphering tags", ^{
-
-		it(@"should return an index path with section 1 for 1002", ^{
-			NSIndexPath *expected = [sut decypherTag:1002];
-			[[theValue([expected section]) should] equal:theValue(1)];
-		});
-
-		it(@"should return an index path with row 2 for 1002", ^{
-			NSIndexPath *expected = [sut decypherTag:1002];
-			[[theValue([expected row]) should] equal:theValue(2)];
-		});
-
-		it(@"should return an index path with section 0 for 20", ^{
-			NSIndexPath *expected = [sut decypherTag:20];
-			[[theValue([expected section]) should] equal:theValue(0)];
-		});
-
-		it(@"should return an index path with row 20 for 20", ^{
-			NSIndexPath *expected = [sut decypherTag:20];
-			[[theValue([expected row]) should] equal:theValue(20)];
-		});
-
-	});
-
 	context(@"Done editing", ^{
 
 		__block id observerMock;
@@ -163,18 +139,11 @@ describe(@"Task Cell", ^{
 			[sut textFieldDidEndEditing:textFieldMock];
 		});
 
-		it(@"-textFieldDidEndEditing: should send the correct index path section from its tag with the notification", ^{
+		it(@"-textFieldDidEndEditing: should send the textField with the notification", ^{
 			[textFieldMock stub:@selector(tag) andReturn:theValue(1002)];
 			[sut textFieldDidEndEditing:textFieldMock];
-			NSIndexPath *expected = [[spy argument] object];
-			[[theValue([expected section]) should] equal:theValue(1)];
-		});
-
-		it(@"-textFieldDidEndEditing: should send the correct index path row from its tag with the notification", ^{
-			[textFieldMock stub:@selector(tag) andReturn:theValue(1002)];
-			[sut textFieldDidEndEditing:textFieldMock];
-			NSIndexPath *expected = [[spy argument] object];
-			[[theValue([expected row]) should] equal:theValue(2)];
+			id expected = [[spy argument] object];
+			[[expected should] equal:textFieldMock];
 		});
 
 	});
