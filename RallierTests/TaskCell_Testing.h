@@ -10,6 +10,5 @@
 
 @interface TaskCell (Testing)
 
-- (NSInteger)calculateTagWithSection:(NSInteger)section row:(NSInteger)row;
 
 @end

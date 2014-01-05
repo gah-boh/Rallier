@@ -5,18 +5,16 @@
 
 SPEC_BEGIN(KanbanTableSourceSpec)
 
-NSString * const notificationName = @"KanbanTableSourceSpec";
-
 describe(@"Defined Task Item Source", ^{
 	__block KanbanTableSource *sut;
 	__block NSMutableArray *items;
 
 	beforeEach(^{
-		sut = [[KanbanTableSource alloc] initWithNotificationName:notificationName];
+		sut = [[KanbanTableSource alloc] init];
 		items = [NSMutableArray array];
-		[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:0 toDo:0 ]];
-		[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:0 toDo:0 ]];
-		[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:0 toDo:0 ]];
+		[items addObject:[[TaskItem alloc] initWithName:@"Get things showing up" estimate:@0 toDo:@0 ]];
+		[items addObject:[[TaskItem alloc] initWithName:@"Do more unit tests" estimate:@0 toDo:@0 ]];
+		[items addObject:[[TaskItem alloc] initWithName:@"Refactor dammit" estimate:@0 toDo:@0 ]];
 		[sut setItems:items];
 	});
 
@@ -57,18 +55,16 @@ describe(@"Defined Task Item Source", ^{
 	});
 
 	context(@"cells", ^{
-
-		__block NSMutableArray *items;
 		__block id taskCellMock;
 
 		beforeEach(^{
 			taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
 		});
 
-		it(@"should tell the cell to configure itself", ^{
+		it(@"should pass the taskItem to the cell", ^{
 			id tableViewMock = [UITableView nullMockWithName:@"tableViewMock"];
 			[tableViewMock stub:@selector(dequeueReusableCellWithIdentifier:forIndexPath:) andReturn:taskCellMock];
-			[[taskCellMock should] receive:@selector(configureWithTaskItem:indexPath:notificationName:)];
+			[[taskCellMock should] receive:@selector(setTaskItem:)];
 			[sut tableView:tableViewMock cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 		});
 
@@ -94,37 +90,6 @@ describe(@"Defined Task Item Source", ^{
 		it(@"should return an index path with row 20 for 20", ^{
 			NSIndexPath *expected = [sut decypherTag:20];
 			[[theValue([expected row]) should] equal:theValue(20)];
-		});
-
-	});
-
-	context(@"Getting edited cells", ^{
-
-		it(@"should subscribe to notification center", ^{
-			[[sut should] receive:@selector(modelChanged:)];
-			[[NSNotificationCenter defaultCenter] postNotificationName:notificationName
-																object:nil];
-		});
-
-		it(@"should decypher the cell tag", ^{
-			[[sut should] receive:@selector(decypherTag:)];
-			[[NSNotificationCenter defaultCenter] postNotificationName:notificationName
-																object:nil];
-		});
-
-		it(@"should change the items estimate corresponding to the cell", ^{
-			id taskCellMock = [TaskCell nullMockWithName:@"taskCellMock"];
-			id estimateFieldMock = [UITextField nullMockWithName:@"estimateFieldMock"];
-			[taskCellMock stub:@selector(estimate) andReturn:estimateFieldMock];
-			[estimateFieldMock stub:@selector(text) andReturn:@"4.00"];
-			TaskItem *expected = [[sut items] firstObject];
-			[[NSNotificationCenter defaultCenter] postNotificationName:notificationName
-																object:taskCellMock];
-			[[theValue([[expected estimate] floatValue]) should] equal:theValue(4.00)];
-		});
-
-		pending(@"should change the items toDo corresponding to the cell", ^{
-
 		});
 
 	});

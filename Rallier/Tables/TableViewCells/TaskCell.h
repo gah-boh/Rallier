@@ -12,13 +12,13 @@
 
 @interface TaskCell : UITableViewCell <UITextFieldDelegate>
 
-@property (nonatomic, copy) NSString *notificationName;
-
 @property (weak, nonatomic) IBOutlet UILabel *taskName;
 @property (weak, nonatomic) IBOutlet UITextField *estimate;
 @property (weak, nonatomic) IBOutlet UITextField *toDo;
 
-- (void)configureWithTaskItem:(TaskItem *)item indexPath:(NSIndexPath *)path notificationName:(NSString *)notification;
+@property (strong, nonatomic) TaskItem *taskItem;
+
+- (void)configureWithTaskItem:(TaskItem *)item;
 
 @end
 

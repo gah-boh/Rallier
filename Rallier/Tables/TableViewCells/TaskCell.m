@@ -20,6 +20,12 @@
     return self;
 }
 
+- (void)setTaskItem:(TaskItem *)taskItem
+{
+	_taskItem = taskItem;
+	[self configureWithTaskItem:taskItem];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -29,8 +35,15 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:[self notificationName]
-														object:textField];
+	[self updateTaskItem];
+}
+
+- (void)updateTaskItem
+{
+	float estimate = [[[self estimate] text] floatValue];
+	float toDo = [[[self toDo] text] floatValue];
+	[[self taskItem] setEstimate:[NSNumber numberWithFloat:estimate]];
+	[[self taskItem] setToDo:[NSNumber numberWithFloat:toDo]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -39,27 +52,11 @@
 	return YES;
 }
 
-- (void)configureWithTaskItem:(TaskItem *)taskItem indexPath:(NSIndexPath *)path notificationName:(NSString *)notification
+- (void)configureWithTaskItem:(TaskItem *)taskItem
 {
-	[self setNotificationName:notification];
 	[[self taskName] setText:[taskItem taskName]];
 	[[self estimate] setText:[self formatTaskNumber:[taskItem estimate]]];
 	[[self toDo] setText:[self formatTaskNumber:[taskItem toDo]]];
-	[self setFieldsTags:path];
-}
-
-- (void)setFieldsTags:(NSIndexPath *)indexPath
-{
-	NSInteger tag = [self calculateTagWithSection:[indexPath section]
-											  row:[indexPath row]];
-	[[self taskName] setTag:tag];
-	[[self estimate] setTag:tag];
-	[[self toDo] setTag:tag];
-}
-
-- (NSInteger)calculateTagWithSection:(NSInteger)section row:(NSInteger)row
-{
-	return 1000 * section + row;
 }
 
 - (NSString *)formatTaskNumber:(NSNumber *)number

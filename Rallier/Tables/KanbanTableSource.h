@@ -19,6 +19,4 @@
 
 @property (nonatomic, strong) NSMutableArray *items;
 
-- (id)initWithNotificationName:(NSString *)notification;
-
 @end

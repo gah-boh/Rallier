@@ -1,17 +1,6 @@
 #import "Kiwi.h"
 #import "TaskCell.h"
-#import "TaskCell_Testing.h"
 #import "TaskItem.h"
-
-@interface MockObserver : NSObject
-- (void)receiverStub:(NSNotification *)notification;
-@end
-@implementation MockObserver
-- (void)receiverStub:(NSNotification *)notification
-{}
-@end
-
-NSString * const notificationName = @"TaskCellSpec";
 
 SPEC_BEGIN(TaskCellSpec)
 
@@ -57,15 +46,14 @@ describe(@"Task Cell", ^{
 		});
 
 		void (^configureSUT)(void) = ^{
-			[sut configureWithTaskItem:taskItem
-							 indexPath:indexPath
-					  notificationName:notificationName];
+			[sut configureWithTaskItem:taskItem];
 		};
 
-		it(@"should set the notification name", ^{
-			configureSUT();
-			[[[sut notificationName] should] equal:notificationName];
+		it(@"should configure the cell when task item is set", ^{
+			[[sut should] receive:@selector(configureWithTaskItem:)];
+			[sut setTaskItem:taskItem];
 		});
+
 
 		it(@"should set the task name text", ^{
 			[[taskNameMock should] receive:@selector(setText:) withArguments:@"test name"];
@@ -82,71 +70,26 @@ describe(@"Task Cell", ^{
 			configureSUT();
 		});
 
-		it(@"should set the tag for the taskName according to the indexPath", ^{
-			[[taskNameMock should] receive:@selector(setTag:)];
-			configureSUT();
-		});
+		context(@"Done editing", ^{
 
-		it(@"should set the tag for the estimateField according to the indexPath", ^{
-			[[estimateFieldMock should] receive:@selector(setTag:)];
-			configureSUT();
-		});
-
-		it(@"should set the tag for the toDoField according to the indexPath", ^{
-			[[toDoFieldMock should] receive:@selector(setTag:)];
-			configureSUT();
-		});
-
-		context(@"calculating tags", ^{
-
-			it(@"should return a value of 2 for section 0 row 2", ^{
-				NSInteger expected = [sut calculateTagWithSection:0 row:2];
-				[[theValue(expected) should] equal:theValue(2)];
+			it(@"-textFieldDidEndEditing: should change the estimate on the taskItem", ^{
+				[estimateFieldMock stub:@selector(text) andReturn:@"2.50"];
+				[sut setTaskItem:taskItem];
+				[sut textFieldDidEndEditing:nil];
+				[[theValue([[taskItem estimate] floatValue]) should] equal:theValue(2.50)];
 			});
 
-			it(@"should return a value of 1004 for section 1 row 4", ^{
-				NSInteger expected = [sut calculateTagWithSection:1 row:4];
-				[[theValue(expected) should] equal:theValue(1004)];
+			it(@"-textFieldDidEndEditing: should change the toDo", ^{
+				[toDoFieldMock stub:@selector(text) andReturn:@"1.00"];
+				[sut setTaskItem:taskItem];
+				[sut textFieldDidEndEditing:nil];
+				[[theValue([[taskItem toDo] floatValue]) should] equal:theValue(1.00)];
 			});
 
 		});
 
 	});
 
-	context(@"Done editing", ^{
-
-		__block id observerMock;
-		__block id textFieldMock;
-		__block KWCaptureSpy *spy;
-
-		beforeEach(^{
-			[sut setNotificationName:notificationName];
-			textFieldMock = [UITextField nullMockWithName:@"textFieldMock"];
-			observerMock = [MockObserver nullMockWithName:@"observerMock"];
-			[[NSNotificationCenter defaultCenter] addObserver:observerMock
-													 selector:@selector(receiverStub:)
-														 name:notificationName
-													   object:nil];
-			spy = [observerMock captureArgument:@selector(receiverStub:) atIndex:0];
-		});
-
-		afterEach(^{
-			[[NSNotificationCenter defaultCenter] removeObserver:observerMock];
-		});
-
-		it(@"-textFieldDidEndEditing: should send a notification with correct name", ^{
-			[[observerMock should] receive:@selector(receiverStub:)];
-			[sut textFieldDidEndEditing:textFieldMock];
-		});
-
-		it(@"-textFieldDidEndEditing: should send the textField with the notification", ^{
-			[textFieldMock stub:@selector(tag) andReturn:theValue(1002)];
-			[sut textFieldDidEndEditing:textFieldMock];
-			id expected = [[spy argument] object];
-			[[expected should] equal:textFieldMock];
-		});
-
-	});
 
 });
 
