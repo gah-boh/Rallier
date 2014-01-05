@@ -21,7 +21,7 @@ CGFloat const rowHeight = 75.0;
 {
 }
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource
+- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource title:(NSString *)title
 {
 	self = [super init];
 	if (self) {

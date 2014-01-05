@@ -13,7 +13,9 @@ describe(@"KanbanTableManager", ^{
 	beforeEach(^{
 		mockTableView = [UITableView nullMock];
 		mockDataSource = [KWMock mockForProtocol:@protocol(KanbanTableViewDataSource)];
-		sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+		sut = [[KanbanTableManager alloc] initWithTableView:mockTableView
+													 source:mockDataSource
+													  title:@"TestTable"];
 	});
 
 	afterEach(^{
@@ -27,7 +29,9 @@ describe(@"KanbanTableManager", ^{
 		beforeEach(^{
 			delegateSpy = [mockTableView captureArgument:@selector(setDelegate:) atIndex:0];
 			sourceSpy = [mockTableView captureArgument:@selector(setDataSource:) atIndex:0];
-			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView
+														 source:mockDataSource
+														  title:@"TestTable"];
 		});
 
 		it(@"should conform to the table view delegate protocol", ^{
@@ -52,7 +56,7 @@ describe(@"KanbanTableManager", ^{
 
 		it(@"on initialization the table view should receive setRowHeight with the global variable value", ^{
 			[[mockTableView should] receive:@selector(setRowHeight:) withArguments:theValue(rowHeight)];
-			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource];
+			sut = [[KanbanTableManager alloc] initWithTableView:mockTableView source:mockDataSource title:nil ];
 		});
 
 	});

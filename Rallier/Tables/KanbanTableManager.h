@@ -19,7 +19,7 @@ extern CGFloat const rowHeight;
 @property (nonatomic) UITableView *view;
 @property (nonatomic) id <KanbanTableViewDataSource> dataSource;
 
-- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource;
+- (id)initWithTableView:(UITableView *)tableView source:(id <KanbanTableViewDataSource>)dataSource title:(NSString *)title;
 
 - (CellTransferHelper *)getCellTransferInfoForPoint:(CGPoint)point;
 

@@ -11,6 +11,8 @@
 		0536A0B7185CB13B0085A16D /* KanbanTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0536A0B6185CB13B0085A16D /* KanbanTableManager.m */; };
 		0536A0B9185CB2460085A16D /* KanbanTableManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAEDBAB2F6E5F5A10064A /* KanbanTableManagerSpec.m */; };
 		0557FBB6185C08A1005C48AC /* KanbanViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */; };
+		059C64FA1879228100446C66 /* KanbanTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059C64F91879228100446C66 /* KanbanTableHeaderView.xib */; };
+		059C64FD1879235800446C66 /* KanbanTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C64FC1879235800446C66 /* KanbanTableHeaderView.m */; };
 		05B8D0F0185C05DB00008F5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0EF185C05DB00008F5A /* Foundation.framework */; };
 		05B8D0F2185C05DB00008F5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0F1185C05DB00008F5A /* CoreGraphics.framework */; };
 		05B8D0F4185C05DB00008F5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B8D0F3185C05DB00008F5A /* UIKit.framework */; };
@@ -32,6 +34,7 @@
 		304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */; };
 		304AA7E5D51FF06495F02D23 /* KanbanTableSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA8DD88AB9347F941B093 /* KanbanTableSource.m */; };
 		304AA98D4BCEFE80A6B98841 /* DragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA52CFCF951CC01DCEED6 /* DragController.m */; };
+		304AAAB1E0377FB692F978EA /* KanbanTableFactorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA413979DBA8A9A2FD194 /* KanbanTableFactorySpec.m */; };
 		304AAC0F7DBA09C35FF42091 /* TaskCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AA1247D8841EFB6CD183B /* TaskCellSpec.m */; };
 		304AAEE4DEC75E717277585D /* CellTransferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 304AAD5F6880A6879DED478B /* CellTransferHelper.m */; };
 		A4CB093542D545DCB03C09CA /* libPods-RallierTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 934D3D32C93D4E4FA2BCA293 /* libPods-RallierTests.a */; };
@@ -55,6 +58,9 @@
 		0557FBB5185C08A1005C48AC /* KanbanViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanViewControllerSpec.m; sourceTree = "<group>"; };
 		059C64F71878C1F100446C66 /* TaskCell_Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskCell_Testing.h; path = RallierTests/TaskCell_Testing.h; sourceTree = SOURCE_ROOT; };
 		059C64F81878E21C00446C66 /* KanbanTableSource_Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KanbanTableSource_Testing.h; sourceTree = "<group>"; };
+		059C64F91879228100446C66 /* KanbanTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KanbanTableHeaderView.xib; path = Tables/KanbanTableHeaderView.xib; sourceTree = "<group>"; };
+		059C64FB1879235800446C66 /* KanbanTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KanbanTableHeaderView.h; path = Tables/KanbanTableHeaderView.h; sourceTree = "<group>"; };
+		059C64FC1879235800446C66 /* KanbanTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KanbanTableHeaderView.m; path = Tables/KanbanTableHeaderView.m; sourceTree = "<group>"; };
 		05B8D0EC185C05DB00008F5A /* Rallier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rallier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B8D0EF185C05DB00008F5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05B8D0F1185C05DB00008F5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +84,7 @@
 		304AA1247D8841EFB6CD183B /* TaskCellSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCellSpec.m; sourceTree = "<group>"; };
 		304AA2A13305A29D905FE29D /* DragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DragController.h; path = Controllers/DragController.h; sourceTree = "<group>"; };
 		304AA3D68BDD9E0102E62407 /* TaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskItem.h; sourceTree = "<group>"; };
+		304AA413979DBA8A9A2FD194 /* KanbanTableFactorySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KanbanTableFactorySpec.m; sourceTree = "<group>"; };
 		304AA52CFCF951CC01DCEED6 /* DragController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DragController.m; path = Controllers/DragController.m; sourceTree = "<group>"; };
 		304AA6A6017F62E4189BA717 /* KanbanTableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KanbanTableSource.h; path = Tables/KanbanTableSource.h; sourceTree = "<group>"; };
 		304AA7D2616BFF9B5DEB14C8 /* TaskItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskItem.m; sourceTree = "<group>"; };
@@ -144,6 +151,9 @@
 				304AA8DD88AB9347F941B093 /* KanbanTableSource.m */,
 				304AA6A6017F62E4189BA717 /* KanbanTableSource.h */,
 				304AAF2B25E43A601C08A100 /* CellTransferHelper.h */,
+				059C64F91879228100446C66 /* KanbanTableHeaderView.xib */,
+				059C64FB1879235800446C66 /* KanbanTableHeaderView.h */,
+				059C64FC1879235800446C66 /* KanbanTableHeaderView.m */,
 				304AAD5F6880A6879DED478B /* CellTransferHelper.m */,
 				304AAF0BAC4378E3575C510A /* KanbanTableFactory.m */,
 				304AA09C48A542E2CF5D55FF /* KanbanTableFactory.h */,
@@ -222,6 +232,7 @@
 				304AAC50FB92B471D6A8052B /* CellTransferHelperSpec.m */,
 				304AADD3501A6F8B290E2D53 /* DragControllerSpec.m */,
 				304AA1247D8841EFB6CD183B /* TaskCellSpec.m */,
+				304AA413979DBA8A9A2FD194 /* KanbanTableFactorySpec.m */,
 			);
 			path = RallierTests;
 			sourceTree = "<group>";
@@ -341,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B8D0FA185C05DB00008F5A /* InfoPlist.strings in Resources */,
+				059C64FA1879228100446C66 /* KanbanTableHeaderView.xib in Resources */,
 				05C4C5151866195600A3DFC9 /* TaskCell.xib in Resources */,
 				05B8D102185C05DB00008F5A /* Images.xcassets in Resources */,
 			);
@@ -396,6 +408,7 @@
 			files = (
 				0536A0B7185CB13B0085A16D /* KanbanTableManager.m in Sources */,
 				05B8D100185C05DB00008F5A /* AppDelegate.m in Sources */,
+				059C64FD1879235800446C66 /* KanbanTableHeaderView.m in Sources */,
 				0536A0AE185C09720085A16D /* KanbanViewController.m in Sources */,
 				05B8D0FC185C05DB00008F5A /* main.m in Sources */,
 				304AA142D4D58AAB702A54DE /* TaskItem.m in Sources */,
@@ -418,6 +431,7 @@
 				304AA20C41891A9DA250E2F2 /* CellTransferHelperSpec.m in Sources */,
 				304AA46ED3887881C3C4296B /* DragControllerSpec.m in Sources */,
 				304AAC0F7DBA09C35FF42091 /* TaskCellSpec.m in Sources */,
+				304AAAB1E0377FB692F978EA /* KanbanTableFactorySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

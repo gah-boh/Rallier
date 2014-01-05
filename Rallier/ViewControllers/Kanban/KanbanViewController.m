@@ -130,7 +130,7 @@
 
 - (void)createDefinedTableManager
 {
-	KanbanTableManager *definedManager = [KanbanTableFactory createKanbanTableManager:[self getDefinedFrame]];
+	KanbanTableManager *definedManager = [KanbanTableFactory createKanbanTableManager:[self getDefinedFrame] withName:@"Defined" ];
 	[self setDefinedTableManager:definedManager];
 	[[self tableManagers] addObject:definedManager];
 
@@ -143,7 +143,7 @@
 
 - (void)createInProgressTableManager
 {
-	KanbanTableManager *inProgress = [KanbanTableFactory createKanbanTableManager:[self getInProgressFrame]];
+	KanbanTableManager *inProgress = [KanbanTableFactory createKanbanTableManager:[self getInProgressFrame] withName:@"In Progress" ];
 	[self setInProgressTableManager:inProgress];
 	[[self tableManagers] addObject:inProgress];
 
@@ -155,7 +155,7 @@
 
 - (void)createCompletedTableManager
 {
-	KanbanTableManager *completedManager = [KanbanTableFactory createKanbanTableManager:[self getCompletedFrame]];
+	KanbanTableManager *completedManager = [KanbanTableFactory createKanbanTableManager:[self getCompletedFrame] withName:@"Completed" ];
 	[self setCompletedTableManager:completedManager];
 	[[self tableManagers] addObject:completedManager];
 }

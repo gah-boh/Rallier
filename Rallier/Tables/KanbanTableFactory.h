@@ -9,5 +9,5 @@
 
 
 @interface KanbanTableFactory : NSObject
-+ (KanbanTableManager *)createKanbanTableManager:(CGRect)frame;
++ (KanbanTableManager *)createKanbanTableManager:(CGRect)frame withName:(NSString *)name;
 @end
