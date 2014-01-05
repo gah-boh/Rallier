@@ -79,14 +79,10 @@ describe(@"Task Cell", ^{
 				[[theValue([expected floatValue]) should] equal:theValue(0.25)];
 			});
 
-			it(@"should strip any non numerical characters part 2", ^{
-				NSString *wrongInput = @"1.a5b6";
-				float expected = [[sut convertNumericFieldText:wrongInput] floatValue];
-				[[theValue(expected) should] equal:theValue(1.56)];
-			});
-
-			pending(@"should raise a warning if non numerical characters were entered", ^{
-
+			it(@"should strip any non numerical characters again", ^{
+				NSString *wrongInput = @"3.a2b5";
+				NSNumber *expected = [sut convertNumericFieldText:wrongInput];
+				[[theValue([expected floatValue]) should] equal:theValue(3.25)];
 			});
 
 			it(@"-textFieldDidEndEditing: should change the estimate on the taskItem", ^{

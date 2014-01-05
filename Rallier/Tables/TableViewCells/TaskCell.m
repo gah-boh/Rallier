@@ -40,10 +40,8 @@
 
 - (void)updateTaskItem
 {
-	float estimate = [[[self estimate] text] floatValue];
-	float toDo = [[[self toDo] text] floatValue];
-	[[self taskItem] setEstimate:[NSNumber numberWithFloat:estimate]];
-	[[self taskItem] setToDo:[NSNumber numberWithFloat:toDo]];
+	[[self taskItem] setEstimate:[self convertNumericFieldText:[[self estimate] text]]];
+	[[self taskItem] setToDo:[self convertNumericFieldText:[[self toDo] text]]];
 }
 
 - (NSNumber *)convertNumericFieldText:(NSString *)text
