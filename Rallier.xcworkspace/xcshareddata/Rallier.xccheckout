@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>91C2364F-1EF5-4C9A-A88F-8DD728F017F8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Rallier</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DE23B16F-68F2-48EE-8B80-BE4AB4AD4672</key>
+		<string>ssh://github.com/gah-boh/Rallier.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Rallier.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DE23B16F-68F2-48EE-8B80-BE4AB4AD4672</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/gah-boh/Rallier.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DE23B16F-68F2-48EE-8B80-BE4AB4AD4672</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DE23B16F-68F2-48EE-8B80-BE4AB4AD4672</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Rallier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
